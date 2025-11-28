@@ -1,0 +1,23 @@
+@use '@lucca-front/scss/src/commons/config' with (
+  $palettesOtherProduct: (
+    'all',
+  )
+);
+
+// LF Components
+@use '@lucca-front/icons/src/main' as _iconsMain;
+@use '@lucca-front/scss/src/main' as _scssMain;
+@use '@lucca-front/scss/src/components/box';
+@use '@lucca-front/scss/src/components/button';
+@use '@lucca-front/scss/src/components/card';
+@use '@lucca-front/scss/src/components/container';
+@use '@lucca-front/scss/src/components/dataTable';
+@use '@lucca-front/scss/src/components/grid';
+@use '@lucca-front/scss/src/components/navside';
+@use '@lucca-front/scss/src/components/title';
+@use '@lucca-front/scss/src/components/segmentedControl';
+@use '@lucca-front/ng/src/main' as _ngMain;
+
+// LF Custom / shame
+@forward 'scss/shame';
+@forward 'scss/utilities';

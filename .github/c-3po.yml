@@ -1,0 +1,18 @@
+notify-pr-assignment:
+  enabled: true
+  branchesPatterns:
+    - pattern: ".*"
+      BU: "pagga"
+  notification-preferences:
+    pagga:
+      channel: "#pagga-pr-review"
+      delay: 10000
+release-drafter:
+  enabled: true
+  releasedBranches:
+    - "main"
+  slackChannels: 
+    - "#ca-passe-sur-master"
+  appLogo: "https://cdn.lucca.fr/lucca-front/icons/softs/ico-pagga.png"
+check-labels:
+  enabled: true

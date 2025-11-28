@@ -1,0 +1,68 @@
+{
+  "name": "lucca-bnb",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --configuration production",
+    "lint": "eslint && stylelint \"src/**/*.scss\"",
+    "lint:fix": "eslint --fix && stylelint \"src/**/*.scss\" --fix",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write ."
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/common": "^20.3.14",
+    "@angular/compiler": "^20.3.14",
+    "@angular/core": "^20.3.14",
+    "@angular/forms": "^20.3.14",
+    "@angular/platform-browser": "^20.3.14",
+    "@angular/router": "^20.3.14",
+    "@lucca-front/icons": "^20.3.2",
+    "@lucca-front/ng": "^20.3.2",
+    "@lucca-front/scss": "^20.3.2",
+    "@lucca/cdk": "^7.6.1",
+    "@lucca/locale-data": "^1.2.0",
+    "@lucca/pay-sdk": "^20.1.1",
+    "@lucca/principal": "^10.0.1",
+    "@lucca/translate": "^1.2.0",
+    "rxjs": "~7.8.2",
+    "tslib": "^2.8.1",
+    "userflow.js": "^2.13.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.3.12",
+    "@angular/cli": "^20.3.12",
+    "@angular/compiler-cli": "^20.3.14",
+    "@angular/platform-browser": "^20.3.14",
+    "@angular/platform-browser-dynamic": "^20.3.14",
+    "@lucca/eslint-plugin": "4.16.1",
+    "@lucca/pagga-eslint": "^1.1.4",
+    "@lucca/pagga-prettier": "^1.1.4",
+    "@lucca/pagga-stylelint": "^1.1.4",
+    "@lucca/proxy": "^4.16.1",
+    "@softarc/eslint-plugin-sheriff": "^0.19.6",
+    "@softarc/sheriff-core": "^0.19.6",
+    "@types/node": "24.10.1",
+    "angular-eslint": "20.7.0",
+    "cross-env": "10.1.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-perfectionist": "4.15.1",
+    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-unused-imports": "4.3.0",
+    "lefthook": "^2.0.4",
+    "lint-staged": "16.2.7",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "8.47.0"
+  },
+  "volta": {
+    "node": "22.21.1"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,html}": "eslint --fix",
+    "*.{css,scss}": "stylelint --fix",
+    "*.{ts,scss,html}": "prettier --write"
+  }
+}

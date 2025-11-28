@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paymonitor-expense-reports
+spec:
+  template:
+    spec:
+      containers:
+      - name: paymonitor-expense-reports
+        image: paymonitor-expense-reports-unified
+        ports:
+        - name: backend-port
+          containerPort: 8080
+        env:
+        - name: TZ
+          value: Europe/Paris
+        volumeMounts:
+        - mountPath: /app/appsettings.json
+          name: appsettings
+          subPath: appsettings.json.model
+      volumes:
+      - name: appsettings
+        secret:
+          defaultMode: 0644
+          secretName: appsettings-paymonitor-expense-reports

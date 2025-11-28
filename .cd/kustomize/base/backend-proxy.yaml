@@ -1,0 +1,17 @@
+apiVersion: lucca-proxy.lucca.tech/v1
+kind: MonoInstanceComponent
+metadata:
+  name: backend-paymonitor-expense-reports
+  labels:
+    lucca-proxy.lucca.tech/isEnabled: 'true'
+    app.kubernetes.io/component: backend
+spec:
+  appId: paymonitor-expense-reports
+  routes:
+  - id: api
+    behavior: Proxy
+    match:
+      path: '/{app:anyOf(paymonitor-expense-reports,payroll-assistant-expense-reports)}/{segment:anyOf(api,ping,healthz,meta,swagger)}/{**wildcard}'
+    transforms:
+      - PathRemovePrefix: /paymonitor-expense-reports
+      - PathRemovePrefix: /payroll-assistant-expense-reports

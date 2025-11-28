@@ -1,0 +1,116 @@
+<div class="dataTableWrapper u-overflowAuto">
+  <table
+    class="dataTable mod-layoutFixed"
+    [class.skeleton]="isLoading"
+    [class.is-loading]="isLoading"
+    [attr.inert]="isLoading ? 'inert' : null"
+  >
+    <thead class="dataTable-head">
+      <tr class="dataTable-head-row">
+        <th class="dataTable-head-row-cell" scope="col" id="data">Donnée Lucca</th>
+        <th class="dataTable-head-row-cell" scope="col" id="code">Code rubrique en paie</th>
+      </tr>
+    </thead>
+    @if (isLoading) {
+      <lu-skeleton-data-table dataTableBodyOnly [cols]="2" />
+    } @else {
+      @for (dataTree of dataTrees; track $index) {
+        @let groupId = `h${$index}`;
+        @if (dataTree.group) {
+          <!-- Si c'est une "Famille de frais" avec catégories -->
+          <tbody class="dataTable-body">
+            <tr class="dataTable-body-row">
+              <th class="dataTable-body-row-cell mod-tree" scope="colgroup" headers="data" [attr.id]="groupId">
+                <div class="dataTable-body-row-cell-expand pr-u-fontWeight600">
+                  <button
+                    type="button"
+                    class="dataTable-body-row-cell-expand-button button"
+                    [attr.aria-expanded]="dataTree.isExpanded"
+                    (click)="toggleDataTree(dataTree)"
+                  >
+                    <lu-icon icon="arrowChevronTop" [alt]="`Afficher ${dataTree.data.length} lignes supplémentaires`" />
+                  </button>
+                  <div
+                    class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap200 pr-u-width100%"
+                  >
+                    <p>{{ dataTree.group.label }}</p>
+                    <lu-icon icon="arrowRight" color="light" />
+                  </div>
+                </div>
+              </th>
+              <td class="dataTable-body-row-cell mod-editable" [headers]="`${groupId} code`">
+                <lu-form-field hiddenLabel label="Code rubrique en paie">
+                  <lu-simple-select
+                    addOptionLabel="Ajouter un code rubrique"
+                    addOptionStrategy="always"
+                    [options]="[]"
+                    [ngModel]="dataTree.value"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </lu-form-field>
+              </td>
+            </tr>
+            @for (item of dataTree.data; track $index) {
+              @let itemId = `${groupId} r${$index}`;
+              <tr class="dataTable-body-row" [class.is-collapsed]="!dataTree.isExpanded">
+                <th
+                  class="dataTable-body-row-cell mod-tree"
+                  scope="row"
+                  [attr.style]="'--components-dataTable-treeLevel: 1'"
+                  [headers]="`${groupId} data`"
+                  [attr.id]="`${itemId}`"
+                >
+                  <div class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap200">
+                    <p>{{ item.label }}</p>
+                    <lu-icon icon="arrowRight" color="light" />
+                  </div>
+                </th>
+                <td class="dataTable-body-row-cell mod-editable" [headers]="`${groupId} ${itemId} code`">
+                  <lu-form-field hiddenLabel label="Code rubrique en paie">
+                    <lu-simple-select
+                      addOptionLabel="Ajouter un code rubrique"
+                      addOptionStrategy="always"
+                      [options]="[]"
+                      [ngModel]="item.value"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </lu-form-field>
+                </td>
+              </tr>
+            }
+          </tbody>
+        } @else {
+          <!-- Si c'est une "Catégorie de frais" sans famille -->
+          <tbody class="dataTable-body">
+            <tr class="dataTable-body-row">
+              <td class="dataTable-body-row-cell">
+                <div class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap200">
+                  <p>{{ dataTree.label }}</p>
+                  <lu-icon icon="arrowRight" color="light" />
+                </div>
+              </td>
+              <td class="dataTable-body-row-cell mod-editable">
+                <lu-form-field hiddenLabel label="Code rubrique en paie">
+                  <lu-simple-select [options]="[]" [ngModel]="dataTree.value" [ngModelOptions]="{ standalone: true }" />
+                </lu-form-field>
+              </td>
+            </tr>
+          </tbody>
+        }
+      } @empty {
+        <tbody class="dataTable-body">
+          <tr class="dataTable-body-row">
+            <td class="dataTable-body-row-cell" colspan="2">
+              <lu-empty-state-section
+                icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconSearch.svg"
+                palette="product"
+                heading="Votre recherche ne donne aucun résultat"
+                description="Et si vous tentiez de modifier vos critères de recherche ?"
+              />
+            </td>
+          </tr>
+        </tbody>
+      }
+    }
+  </table>
+</div>

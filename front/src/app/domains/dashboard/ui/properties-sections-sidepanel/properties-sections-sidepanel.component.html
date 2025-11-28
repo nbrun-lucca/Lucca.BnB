@@ -1,0 +1,37 @@
+<lu-dialog>
+  <form class="dialog-inside-formOptional">
+    <lu-dialog-header>
+      <h1>Propriétés des rubriques</h1>
+    </lu-dialog-header>
+
+    <lu-dialog-content>
+      <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap150">
+        @for (i of [].constructor(5); track $index) {
+          <div class="pr-u-displayFlex pr-u-alignItemsFlexEnd pr-u-justifyContentSpaceBetween pr-u-gap150">
+            <lu-form-field class="pr-u-width100%" [label]="`Propriété ${$index + 1}`">
+              <lu-text-input required type="text" [ngModelOptions]="{ standalone: true }" [(ngModel)]="code" />
+            </lu-form-field>
+            @if (!$first) {
+              <button type="button" luButton="text" luTooltip="Supprimer la propriété" luTooltipOnlyForDisplay>
+                <lu-icon icon="trashDelete" alt="Supprimer la propriété" />
+              </button>
+            }
+          </div>
+          @if ($last) {
+            <button type="button" luButton="outlined" class="pr-u-alignSelfFlexStart" palette="product" size="S">
+              <lu-icon icon="mathsPlus" />
+              Ajouter une propriété
+            </button>
+          }
+        }
+      </div>
+    </lu-dialog-content>
+
+    <lu-dialog-footer>
+      <div class="footer-actions">
+        <button type="button" luButton>Enregistrer</button>
+        <button type="button" luButton="text" luDialogDismiss>Annuler</button>
+      </div>
+    </lu-dialog-footer>
+  </form>
+</lu-dialog>

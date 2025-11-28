@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: paymonitor-expense-reports
+  labels:
+    lucca-proxy.lucca.tech/isEnabled: 'true'
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: backend-port

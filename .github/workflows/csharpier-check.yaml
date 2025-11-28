@@ -1,0 +1,17 @@
+name: CSharpier
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check_formatting:
+    runs-on: ubuntu-latest
+    name: Check CSharp Format
+    steps:
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
+        with:
+          fetch-depth: 0
+      - run: |
+          dotnet tool install csharpier --global
+          csharpier check --config-path ./back/.csharpierrc ./back

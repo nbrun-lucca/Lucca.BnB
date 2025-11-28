@@ -1,0 +1,18 @@
+pre-commit:
+  parallel: false
+  commands:
+    eslint:
+      root: "front/"
+      glob: "*.{ts,html}"
+      run: "npx eslint --quiet --fix {staged_files}"
+      stage_fixed: true
+    stylelint:
+      root: "front/"
+      glob: "*.{css,scss}"
+      run: "npx stylelint --fix {staged_files}"
+      stage_fixed: true
+    prettier:
+      root: "front/"
+      glob: "*.{js,mjs,ts,scss,html}"
+      run: "npx prettier --write {staged_files}"
+      stage_fixed: true

@@ -1,0 +1,8 @@
+{
+  "environmentFilePath": "src/environments/environment.prod.ts",
+  "releaseFilePath": "release.txt",
+  "distDeployUrl": "/lucca-bnb/static/",
+  "skipSourcemapsDeletion": false,
+  "service": "lucca.bnb",
+  "distPath": "dist"
+}

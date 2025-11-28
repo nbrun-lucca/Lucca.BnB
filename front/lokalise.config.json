@@ -1,0 +1,11 @@
+{
+  "config": [
+    {
+      "generator": "json",
+      "project_id": "380527315e3d6e1f13ed73.75736159",
+      "local_directory": "src/assets/i18n",
+      "remote_directory": "Lucca.BnB/Resources/front/src/assets/i18n",
+      "ci": false
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/name: paymonitor-expense-reports
+
+resources:
+  - backend-proxy.yaml
+  - deployment.yaml
+  - frontend-proxy.yaml
+  - service.yaml
+configMapGenerator:
+  - name: appsettings-paymonitor-expense-reports
+    options:
+      labels:
+        type: templated
+    files:
+      - ../../../back/Pay.Monitor.ExpenseReports.Web/appsettings.json.model
+components:
+  - https://github.com/luccasa/apps.kustomize.lib?ref=v1.5.0
