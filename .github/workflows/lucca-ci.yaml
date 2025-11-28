@@ -29,35 +29,9 @@ on:
     branches:
       - main
 jobs:
-  back:
-    uses: LuccaSA/actions/.github/workflows/lucca-ci.yml@cf2e827cddc8c1f60672f26aa9d4de5cb4f87c6c # v2.0.2
-    with:
-      cake-file: back/build.cake
-      mssql: true
-      skip-sonar: ${{ github.event.inputs.skip-sonar == 'true' }}
-      runs-on: ${{ github.event.inputs.runs-on || 'lucca-ci' }}
-    secrets: inherit
-  lint-swagger:
-    uses: LuccaSA/actions/.github/workflows/lucca-ci.yml@cf2e827cddc8c1f60672f26aa9d4de5cb4f87c6c # v2.0.2
-    with:
-      cake-file: api/build.cake
-      runs-on: ${{ github.event.inputs.runs-on || vars.CI_RUNNER || vars.DEFAULT_CI_RUNNER }} 
-    secrets: inherit
   front:
     uses: LuccaSA/actions/.github/workflows/lucca-ci.yml@cf2e827cddc8c1f60672f26aa9d4de5cb4f87c6c # v2.0.2
     with:
       cake-file: front/build.cake
       runs-on: ${{ github.event.inputs.runs-on || vars.CI_RUNNER || vars.DEFAULT_CI_RUNNER  }}
     secrets: inherit
-  docker:
-    uses: LuccaSA/actions/.github/workflows/unified-docker-image.yml@cf2e827cddc8c1f60672f26aa9d4de5cb4f87c6c # v2.0.2
-    needs:
-      - front
-      - back
-    secrets: inherit
-    with:
-      applicationCode: paymonitor-expense-reports
-      frontend: true
-      docker-file: Dockerfile
-      runs-on: lucca-ci
-      image-name: paymonitor/paymonitor-expense-reports-unified
