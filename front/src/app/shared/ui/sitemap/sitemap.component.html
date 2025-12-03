@@ -1,0 +1,55 @@
+<div id="navSide" class="navSide" title="Navigation interne" [class.is-open]="showMenu">
+  <nav role="navigation" aria-label="Nom application" class="navSide-wrapper">
+    @if (isLoading) {
+      <div class="navSide-mainSection">
+        <ul class="navSide-scrollWrapper">
+          <div class="navSide-item-placeholder"></div>
+          <div class="navSide-item-placeholder"></div>
+          <div class="navSide-item-placeholder"></div>
+        </ul>
+      </div>
+    } @else {
+      <div class="navSide-mainSection">
+        <div class="navSide-item mod-mobileToggle">
+          <button type="button" class="navSide-item-link" [attr.aria-expanded]="showMenu" (click)="toggleMenu()">
+            <span class="navSide-item-link-title">Menu</span>
+            <span aria-hidden="true" class="navSide-item-arrow lucca-icon icon-arrowChevronRight"></span>
+          </button>
+        </div>
+        <ul class="navSide-scrollWrapper">
+          <li class="navSide-item">
+            <a routerLink="/dashboard" class="navSide-item-link" [class.is-active]="isRouteActive('dashboard')">
+              <span aria-hidden="true" class="lucca-icon icon-book"></span>
+              <span class="navSide-item-link-title">Journal de bord</span>
+              <span class="newBadge">New</span>
+            </a>
+          </li>
+          <li class="navSide-item">
+            <a routerLink="/journey" class="navSide-item-link" [class.is-active]="isRouteActive('journey')">
+              <span aria-hidden="true" class="lucca-icon icon-transportTrain"></span>
+              <span class="navSide-item-link-title">Voyage</span>
+              <div class="navSide-item-link-badgesOptional">
+                <span class="numericBadge">9</span>
+              </div>
+            </a>
+          </li>
+          <li class="navSide-item">
+            <a routerLink="/shelter" class="navSide-item-link" [class.is-active]="isRouteActive('shelter')">
+              <span aria-hidden="true" class="lucca-icon icon-buildingHouseStarred"></span>
+              <span class="navSide-item-link-title">Abri</span>
+              <div class="navSide-item-link-badgesOptional">
+                <span class="numericBadge">9</span>
+              </div>
+            </a>
+          </li>
+          <li class="navSide-item">
+            <a routerLink="/admin" class="navSide-item-link" [class.is-active]="isRouteActive('admin')">
+              <span aria-hidden="true" class="lucca-icon lucca-icon icon-tools"></span>
+              <span class="navSide-item-link-title">Paramètres</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    }
+  </nav>
+</div>
