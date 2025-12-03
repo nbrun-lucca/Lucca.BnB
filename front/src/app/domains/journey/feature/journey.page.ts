@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '@lucca-front/ng/button';
 import { LuDialogService } from '@lucca-front/ng/dialog';
+import { EmptyStateSectionComponent } from '@lucca-front/ng/empty-state';
 import { IconComponent } from '@lucca-front/ng/icon';
 import { MainLayoutBlockComponent, MainLayoutComponent } from '@lucca-front/ng/main-layout';
 import { PageHeaderComponent } from '@lucca-front/ng/page-header';
@@ -15,6 +16,7 @@ import { JourneySheltersComponent } from '../ui/journey-shelters/journey-shelter
     MainLayoutComponent,
     PageHeaderComponent,
     JourneySheltersComponent,
+    EmptyStateSectionComponent,
     ButtonComponent,
     IconComponent,
   ],

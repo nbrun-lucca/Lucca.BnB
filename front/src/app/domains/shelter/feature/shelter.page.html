@@ -1,6 +1,6 @@
 <lu-main-layout footerSticky>
   <ng-container mainLayoutHeader>
-    <lu-page-header container label="Hôte" description="Proposer un abri aux voyageurs">
+    <lu-page-header container label="Hôte" description="Ouvrez votre abri et accueillez des voyageurs.">
       <ng-container pageHeaderActions>
         <button type="button" luButton="text" (click)="openGuide()">
           <lu-icon icon="book" />
@@ -13,39 +13,117 @@
     <lu-main-layout-block>
       <div class="container mod-dataPage">
         <section>
-          <header>
-            <h2>Mon abri</h2>
+          <header class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap100">
+            <h2>Votre abri</h2>
+            @if (hasShelter) {
+              <button type="button" luButton="outlined">Gérer votre abri</button>
+            }
           </header>
           <div class="box pr-u-marginBlockStart100">
-            <p>Contenu à venir</p>
-            <ul>
-              <li>l’adresse précise du logement</li>
-              <li>le type de logement (Maison/apt)</li>
-              <li>si le Luccasien aura une pièce à part ou non</li>
-              <li>le type de couchage (Lit/canapé/matelas gonflable)</li>
-              <li>l’équipement (Wifi, serviettes de bain, parking, local à vélo)</li>
-              <li>l’équipement (Wifi, serviettes de bain, parking, local à vélo)</li>
-              <li>si le logement accueille d’autres habitants (animaux, enfants, conjoints, colocs, etc)</li>
-              <li>les règles du logement : horaires, fumeur/non fumeur, etc</li>
-            </ul>
+            @if (hasShelter) {
+              <div class="pr-u-displayFlex pr-u-gap300">
+                <div class="dataTableWrapper mod-nested">
+                  <div class="dataTable">
+                    <div class="dataTable-head">
+                      <div class="dataTable-head-row">
+                        <div class="dataTable-head-row-cell">
+                          <div class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap100">
+                            <h4 class="pr-u-ellipsis">Ma petite maison</h4>
+                            <lu-status-badge label="Proposé" palette="success" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dataTable-body pr-u-textS">
+                      <dl class="dataTable-body-row">
+                        <dt class="dataTable-head-row-cell">Adresse</dt>
+                        <dd class="dataTable-head-row-cell pag-u-textNeutral800">151-157 Av. de France, 75013 Paris</dd>
+                      </dl>
+                      <dl class="dataTable-body-row">
+                        <dt class="dataTable-head-row-cell">Type de logement</dt>
+                        <dd class="dataTable-head-row-cell pag-u-textNeutral800">Maison | Appartement</dd>
+                      </dl>
+                      <dl class="dataTable-body-row">
+                        <dt class="dataTable-head-row-cell">Pièce à part</dt>
+                        <dd class="dataTable-head-row-cell pag-u-textNeutral800">Oui | Non</dd>
+                      </dl>
+                      <dl class="dataTable-body-row">
+                        <dt class="dataTable-head-row-cell">Type de couchage</dt>
+                        <dd class="dataTable-head-row-cell pag-u-textNeutral800">Lit | Canapé | Matelas gonflable</dd>
+                      </dl>
+                      <dl class="dataTable-body-row">
+                        <dt class="dataTable-head-row-cell">Equipement</dt>
+                        <dd class="dataTable-head-row-cell pag-u-textNeutral800">
+                          Wifi, serviettes de bain, parking, local à vélo
+                        </dd>
+                      </dl>
+                      <dl class="dataTable-body-row">
+                        <dt class="dataTable-head-row-cell">Autres habitants</dt>
+                        <dd class="dataTable-head-row-cell pag-u-textNeutral800">
+                          Animaux, enfants, conjoints, colocs, etc
+                        </dd>
+                      </dl>
+                      <dl class="dataTable-body-row">
+                        <dt class="dataTable-head-row-cell">Autres infos, règles</dt>
+                        <dd class="dataTable-head-row-cell pag-u-textNeutral800">
+                          Horaires de sommeil, fumeur/non fumeur, etc
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <img
+                  height="300"
+                  width="650"
+                  ngSrc="https://www.maisons-pierre.com/wp-content/uploads/2021/04/1300x600-maisons-pierre-lemag-quel-type-maison-choisir-couv.jpg"
+                  alt=""
+                />
+              </div>
+            } @else {
+              <lu-empty-state-section
+                icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperAction.svg"
+                heading="Aucun abri configuré"
+                description="Vous devez configurer un abri avant de pouvoir recevoir des demandes de voyageurs."
+              >
+                <button type="button" luButton>Configurer votre abri</button>
+              </lu-empty-state-section>
+            }
           </div>
         </section>
+        @if (hasShelter) {
+          <section>
+            <header>
+              <h2>Vos demandes en cours</h2>
+            </header>
+            <div class="box pr-u-marginBlockStart100">
+              <lu-empty-state-section
+                icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperActionSuccess.svg"
+                heading="Aucune demande pour le moment"
+                description="Vous n’avez actuellement aucune demande d'abri à traiter. Les nouvelles demandes apparaîtront ici dès leur réception."
+                palette="success"
+              />
+            </div>
+          </section>
+        }
         <section>
           <header>
-            <h2>Mes demandes (en cours et passées)</h2>
+            <h2>Vos accueils passés</h2>
           </header>
           <div class="box pr-u-marginBlockStart100">
-            <p>Contenu à venir</p>
+            <lu-empty-state-section
+              icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaper.svg"
+              heading="Aucun accueil enregistré"
+              description="Lorsque vous aurez hébergé un voyageur, vos accueils passés apparaîtront ici."
+            />
           </div>
         </section>
-        <section>
-          <header>
-            <h2>Ne plus être hôte</h2>
-          </header>
-          <div class="box pr-u-marginBlockStart100">
-            <p>Contenu à venir</p>
-          </div>
-        </section>
+        <lu-callout heading="Désactiver votre statut d'hôte" state="error">
+          Vous ne proposerez plus d’abri aux voyageurs et votre espace ne sera plus visible. Cette action peut être
+          réactivée à tout moment.
+          <lu-callout-actions>
+            <button type="button" luButton="outlined">Désactiver</button>
+          </lu-callout-actions>
+        </lu-callout>
       </div>
     </lu-main-layout-block>
   </ng-container>

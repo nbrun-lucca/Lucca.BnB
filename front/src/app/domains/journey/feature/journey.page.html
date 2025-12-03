@@ -15,10 +15,28 @@
         <lbnb-journey-shelters />
         <section>
           <header>
-            <h2>Mes demandes (en cours et passées)</h2>
+            <h2>Vos demandes en cours</h2>
           </header>
           <div class="box pr-u-marginBlockStart100">
-            <p>Contenu à venir</p>
+            <lu-empty-state-section
+              hx="3"
+              icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperActionSuccess.svg"
+              heading="Aucune demande"
+              description="Ni en cours, ni passée"
+            />
+          </div>
+        </section>
+        <section>
+          <header>
+            <h2>Vos voyages passées</h2>
+          </header>
+          <div class="box pr-u-marginBlockStart100">
+            <lu-empty-state-section
+              hx="3"
+              icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperActionSuccess.svg"
+              heading="Aucune demande"
+              description="Ni en cours, ni passée"
+            />
           </div>
         </section>
       </div>
