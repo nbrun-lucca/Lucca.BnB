@@ -2,7 +2,7 @@ ADMIN
 
 - Choix des informations avant et après validation de la demande
 - Suppression des abris
-- Ajout de lieux singificatifs
+- Ajout de lieux significatifs
 
 HOTE
 
