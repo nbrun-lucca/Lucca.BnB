@@ -1,0 +1,51 @@
+<form class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
+  <lu-filter-bar>
+    <ul *luFilterPillAddonBefore class="segmentedControl filterBar-segmentedControl" role="presentation">
+      <li class="segmentedControl-item">
+        <input
+          type="radio"
+          class="segmentedControl-item-input"
+          name="tab"
+          id="tabMap"
+          [value]="VIEW_TYPE.MAP"
+          [(ngModel)]="view"
+        />
+        <label for="tabMap" class="segmentedControl-item-action">Vue carte</label>
+      </li>
+      <li class="segmentedControl-item">
+        <input
+          type="radio"
+          class="segmentedControl-item-input"
+          name="tab"
+          id="tabList"
+          [value]="VIEW_TYPE.LIST"
+          [(ngModel)]="view"
+        />
+        <label for="tabList" class="segmentedControl-item-action">Vue liste</label>
+      </li>
+    </ul>
+    <lu-filter-pill label="Période">
+      <lu-date-range-input [ngModelOptions]="{ standalone: true }" [(ngModel)]="period" />
+    </lu-filter-pill>
+    <lu-filter-pill label="Lieu">
+      <lu-simple-select [ngModelOptions]="{ standalone: true }" [(ngModel)]="place" />
+    </lu-filter-pill>
+  </lu-filter-bar>
+  @if (view() === VIEW_TYPE.MAP) {
+    <div class="box">
+      <iframe
+        src="https://www.google.com/maps/d/u/0/viewer?hl=fr&ll=48.86631203364376%2C2.355756225748862&z=13&mid=1NoIu6TV-lAlMuNzXWbBlR60nhMLqDjY8"
+        width="560"
+        height="315"
+        title="Carte des BnB"
+      ></iframe>
+    </div>
+  }
+  @if (view() === VIEW_TYPE.LIST) {
+    @for (i of [].constructor(6); track $index) {
+      <div class="box">
+        <p>Abri {{ $index }}</p>
+      </div>
+    }
+  }
+</form>

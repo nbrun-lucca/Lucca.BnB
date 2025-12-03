@@ -1,25 +1,17 @@
 <lu-main-layout footerSticky>
   <ng-container mainLayoutHeader>
-    <lu-page-header container label="Abri : être hôte" />
+    <lu-page-header container label="Hôte" description="Proposer un abri aux voyageurs">
+      <ng-container pageHeaderActions>
+        <button type="button" luButton="text" (click)="openGuide()">
+          <lu-icon icon="book" />
+          Guide de l'hôte
+        </button>
+      </ng-container>
+    </lu-page-header>
   </ng-container>
   <ng-container mainLayoutContent>
     <lu-main-layout-block>
       <div class="container mod-dataPage">
-        <section>
-          <header>
-            <h2>Le guide de l'hôte</h2>
-          </header>
-          <div class="box pr-u-marginBlockStart100">
-            <p>Contenu à venir (sidepanel header action)</p>
-            <p>
-  - **_Un couchage tu proposeras_** : canapé lit, canapé, ou chambre d’amis… l’essentiel est de bien spécifier ce que tu proposes. Contacte @Joséphine Rohner par slack pour donner les spécificités de ton logement.
-  - **_Des informations tu fourniras_** : adresse, mode de vie, choses à respecter chez toi… il est important que le Luccasien que tu accueilles soit prévenu pour qu’il puisse respecter ton environnement.
-  - **_Sur le Luccasien que tu accueilles tu te renseigneras_** : renseigne-toi sur ses contraintes logistiques (horaires d’arrivée, bagages, etc) mais également sur le Luccasien lui-même (fais un tour sur le portrait chinois de sa fiche collaborateur dans Core RH par exemple)
-  - **_L’accueil tu prépareras_** : tel que tu aimerais être reçu
-    Pour bien recevoir il faut le vouloir ! Ne te sens pas obligé de proposer ton logement si tu n’en as pas envie. Tu peux aussi refuser une demande si elle ne t’arrange pas.
-            </p>
-          </div>
-        </section>
         <section>
           <header>
             <h2>Mon abri</h2>

@@ -5,14 +5,36 @@
   <ng-container mainLayoutContent>
     <lu-main-layout-block>
       <div class="container mod-dataPage">
-        <h2>Bienvenue sur Lucca BnB</h2>
-        <p>Mes demandes en cours / passées (voyageur)</p>
-        <p>Mes demandes en cours / passées (hôte) ou devenir hôte</p>
+        <lu-fancy-box
+          backgroundLeft="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/background-left-bubbles.svg"
+          backgroundRight="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/background-right-candies.svg"
+          foreground="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/foreground-right-pizza.svg"
+        >
+          <div class="pr-u-displayFlex pr-u-gap300">
+            <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-alignItemsCenter pr-u-gap100">
+              <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
+                <lu-icon icon="transportTrain" />
+                Voyageur
+              </h2>
+              <p><lu-numeric-badge palette="product" [value]="7" /> demandes en cours</p>
+              <a routerLink="/journey" luButton>Préparer un voyage</a>
+            </div>
+            <lu-divider vertical separatorRole />
+            <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-alignItemsCenter pr-u-gap100">
+              <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
+                <lu-icon icon="buildingHouseStarred" />
+                Hôte
+              </h2>
+              <p><lu-numeric-badge palette="product" [value]="3" /> demandes en cours</p>
+              <a routerLink="/shelter" luButton="outlined" palette="product">Consulter mon abri</a>
+            </div>
+          </div>
+        </lu-fancy-box>
       </div>
       <div class="container mod-dataPage">
         <section>
           <header>
-            <h2>Votre prochain voyage</h2>
+            <h2>Mon prochain voyage</h2>
           </header>
           <div class="box pr-u-marginBlockStart100">
             <p>Contenu à venir</p>
@@ -20,10 +42,28 @@
         </section>
         <section>
           <header>
-            <h2>Votre prochain accueil</h2>
+            <h2>Mon prochain accueil</h2>
           </header>
           <div class="box pr-u-marginBlockStart100">
             <p>Contenu à venir</p>
+          </div>
+        </section>
+        <section>
+          <header>
+            <h2>Mon passeport</h2>
+          </header>
+          <div class="box pr-u-marginBlockStart100">
+            <p>Contenu à venir</p>
+            <ul>
+              <li>l’adresse précise du logement</li>
+              <li>le type de logement (Maison/apt)</li>
+              <li>si le Luccasien aura une pièce à part ou non</li>
+              <li>le type de couchage (Lit/canapé/matelas gonflable)</li>
+              <li>l’équipement (Wifi, serviettes de bain, parking, local à vélo)</li>
+              <li>l’équipement (Wifi, serviettes de bain, parking, local à vélo)</li>
+              <li>si le logement accueille d’autres habitants (animaux, enfants, conjoints, colocs, etc)</li>
+              <li>les règles du logement : horaires, fumeur/non fumeur, etc</li>
+            </ul>
           </div>
         </section>
       </div>
