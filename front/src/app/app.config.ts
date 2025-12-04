@@ -9,6 +9,7 @@ import {
   provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, withComponentInputBinding, withRouterConfig } from '@angular/router';
+import { MODULE_ID, ROOT_PATH } from '@app/shared/util/app.const';
 import { provideCoreSelectCurrentUserId } from '@lucca-front/ng/core-select/user';
 import { configureLuDialog, provideLuDialog } from '@lucca-front/ng/dialog';
 import { configureLuPopover } from '@lucca-front/ng/popover2';
@@ -26,7 +27,6 @@ import { provideLuccaTranslate, translationsHttpLoader } from '@lucca/translate'
 import { map } from 'rxjs';
 
 import { APP_ROUTES } from './app.routes';
-import { MODULE_ID, ROOT_PATH } from './shared/util/app.const';
 
 const provideLuccaTools = () =>
   makeEnvironmentProviders([

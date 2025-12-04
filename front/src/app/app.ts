@@ -1,10 +1,9 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SitemapComponent } from '@app/shared/ui/sitemap/sitemap.component';
 import { LuSkipLinksComponent } from '@lucca-front/ng/a11y';
 import { AppLayoutComponent } from '@lucca-front/ng/app-layout';
 import { AccessibilityNavComponent } from '@lucca/pay-sdk/components';
-
-import { SitemapComponent } from './shared/ui/sitemap/sitemap.component';
 
 @Component({
   selector: 'lbnb-root',

@@ -10,7 +10,7 @@
           backgroundRight="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/background-right-candies.svg"
           foreground="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/foreground-right-pizza.svg"
         >
-          <div class="pr-u-displayFlex pr-u-gap300">
+          <div class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap300">
             <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-alignItemsCenter pr-u-gap100">
               <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
                 <lu-icon icon="transportTrain" />
@@ -21,12 +21,22 @@
             </div>
             <lu-divider vertical separatorRole />
             <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-alignItemsCenter pr-u-gap100">
-              <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
-                <lu-icon icon="buildingHouseStarred" />
-                Hôte
-              </h2>
-              <p><lu-numeric-badge palette="product" [value]="3" /> demandes en cours</p>
-              <a routerLink="/shelter" luButton="outlined" palette="product">Consulter mon abri</a>
+              @if (store.isHost()) {
+                <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
+                  <lu-icon icon="buildingHouseStarred" />
+                  Hôte
+                </h2>
+                <p><lu-numeric-badge palette="product" [value]="3" /> demandes en cours</p>
+                <a routerLink="/shelter" luButton="outlined" palette="product">Consulter mon abri</a>
+              } @else {
+                <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
+                  <lu-icon icon="buildingHouseStarred" />
+                  Non hôte
+                </h2>
+                <button type="button" luButton="outlined" palette="product" (click)="store.toggleHosting()">
+                  Devenir hôte
+                </button>
+              }
             </div>
           </div>
         </lu-fancy-box>

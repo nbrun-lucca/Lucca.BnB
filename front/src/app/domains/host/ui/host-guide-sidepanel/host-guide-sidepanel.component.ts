@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BoxComponent } from '@lucca-front/ng/box';
 import { ButtonComponent } from '@lucca-front/ng/button';
 import {
@@ -13,7 +12,6 @@ import {
 @Component({
   selector: 'lbnb-host-guide-sidepanel',
   imports: [
-    FormsModule,
     DialogComponent,
     DialogHeaderComponent,
     DialogContentComponent,

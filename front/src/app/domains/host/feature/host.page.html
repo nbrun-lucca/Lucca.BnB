@@ -6,6 +6,27 @@
           <lu-icon icon="book" />
           Guide de l'hôte
         </button>
+        <button
+          type="button"
+          luButton="text"
+          size="S"
+          luTooltipOnlyForDisplay
+          luTooltip="Afficher la liste des actions"
+          [luDropdown]="dropdownSample"
+          (click)="$event.stopPropagation()"
+        >
+          <lu-icon icon="menuDots" alt="Afficher la liste des actions" />
+        </button>
+        <ng-template #dropdownSample>
+          <lu-dropdown-menu>
+            <lu-dropdown-item>
+              <button lu-dropdown-action type="button" critical aria-haspopup="dialog" (click)="deactivate()">
+                <lu-icon icon="trashDelete" />
+                Désactiver votre statut d'hôte
+              </button>
+            </lu-dropdown-item>
+          </lu-dropdown-menu>
+        </ng-template>
       </ng-container>
     </lu-page-header>
   </ng-container>
@@ -60,13 +81,6 @@
             />
           </div>
         </section>
-        <lu-callout heading="Désactiver votre statut d'hôte" state="error">
-          Vous ne proposerez plus d’abri aux voyageurs et votre espace ne sera plus visible. Cette action peut être
-          réactivée à tout moment.
-          <lu-callout-actions>
-            <button type="button" luButton="outlined">Désactiver</button>
-          </lu-callout-actions>
-        </lu-callout>
       </div>
     </lu-main-layout-block>
   </ng-container>

@@ -38,21 +38,25 @@
               </div>
             </a>
           </li>
-          <li class="navSide-item">
-            <a routerLink="/host" class="navSide-item-link" [class.is-active]="isRouteActive('host')">
-              <span aria-hidden="true" class="lucca-icon icon-buildingHouseStarred"></span>
-              <span class="navSide-item-link-title">Hôte</span>
-              <div class="navSide-item-link-badgesOptional">
-                <span class="numericBadge">3</span>
-              </div>
-            </a>
-          </li>
-          <li class="navSide-item">
-            <a routerLink="/admin" class="navSide-item-link" [class.is-active]="isRouteActive('admin')">
-              <span aria-hidden="true" class="lucca-icon lucca-icon icon-tools"></span>
-              <span class="navSide-item-link-title">Paramètres</span>
-            </a>
-          </li>
+          @if (store.isHost()) {
+            <li class="navSide-item">
+              <a routerLink="/host" class="navSide-item-link" [class.is-active]="isRouteActive('host')">
+                <span aria-hidden="true" class="lucca-icon icon-buildingHouseStarred"></span>
+                <span class="navSide-item-link-title">Hôte</span>
+                <div class="navSide-item-link-badgesOptional">
+                  <span class="numericBadge">3</span>
+                </div>
+              </a>
+            </li>
+          }
+          @if (store.isAdmin()) {
+            <li class="navSide-item">
+              <a routerLink="/admin" class="navSide-item-link" [class.is-active]="isRouteActive('admin')">
+                <span aria-hidden="true" class="lucca-icon lucca-icon icon-tools"></span>
+                <span class="navSide-item-link-title">Paramètres</span>
+              </a>
+            </li>
+          }
         </ul>
       </div>
     }

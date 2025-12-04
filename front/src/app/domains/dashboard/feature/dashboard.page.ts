@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AppStore } from '@app/shared/data/stores/app.store';
 import { ButtonComponent } from '@lucca-front/ng/button';
 import { DividerComponent } from '@lucca-front/ng/divider';
 import { FancyBoxComponent } from '@lucca-front/ng/fancy-box';
@@ -24,6 +25,8 @@ import { PageHeaderComponent } from '@lucca-front/ng/page-header';
   templateUrl: './dashboard.page.html',
 })
 export default class DashboardPage {
+  readonly store = inject(AppStore);
+
   hasNextJourney = false;
   hasNextWelcome = false;
 }

@@ -26,6 +26,7 @@
     "@lucca/pay-sdk": "^20.1.1",
     "@lucca/principal": "^10.0.1",
     "@lucca/translate": "^1.2.0",
+    "@ngrx/signals": "^20.1.0",
     "rxjs": "~7.8.2",
     "tslib": "^2.8.1",
     "userflow.js": "^2.13.0"
