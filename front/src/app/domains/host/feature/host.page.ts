@@ -10,10 +10,10 @@ import { MainLayoutBlockComponent, MainLayoutComponent } from '@lucca-front/ng/m
 import { PageHeaderComponent } from '@lucca-front/ng/page-header';
 import { StatusBadgeComponent } from '@lucca-front/ng/statusBadge';
 
-import { ShelterGuideSidepanelComponent } from '../ui/shelter-guide-sidepanel/shelter-guide-sidepanel.component';
+import { HostGuideSidepanelComponent } from '../ui/host-guide-sidepanel/host-guide-sidepanel.component';
 
 @Component({
-  selector: 'lbnb-shelter-page',
+  selector: 'lbnb-host-page',
   imports: [
     NgOptimizedImage,
     MainLayoutBlockComponent,
@@ -26,17 +26,16 @@ import { ShelterGuideSidepanelComponent } from '../ui/shelter-guide-sidepanel/sh
     ButtonComponent,
     IconComponent,
   ],
-  templateUrl: './shelter.page.html',
-  styleUrl: './shelter.page.scss',
+  templateUrl: './host.page.html',
 })
-export default class ShelterPage {
+export default class HostPage {
   readonly #dialog = inject(LuDialogService);
 
   hasShelter = true;
 
   public openGuide() {
     this.#dialog.open({
-      content: ShelterGuideSidepanelComponent,
+      content: HostGuideSidepanelComponent,
       mode: 'drawer',
       size: 'S',
     });

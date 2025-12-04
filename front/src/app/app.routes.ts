@@ -6,12 +6,16 @@ export const APP_ROUTES: Routes = [
     loadComponent: () => import('@app/dashboard/feature/dashboard.page'),
   },
   {
-    path: 'journey',
-    loadComponent: () => import('@app/journey/feature/journey.page'),
+    path: 'map',
+    loadComponent: () => import('@app/map/feature/map.page'),
   },
   {
-    path: 'shelter',
-    loadComponent: () => import('@app/shelter/feature/shelter.page'),
+    path: 'traveler',
+    loadComponent: () => import('@app/traveler/feature/traveler.page'),
+  },
+  {
+    path: 'host',
+    loadComponent: () => import('@app/host/feature/host.page'),
   },
   {
     path: 'admin',

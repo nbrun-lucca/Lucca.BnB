@@ -21,11 +21,16 @@
             <a routerLink="/dashboard" class="navSide-item-link" [class.is-active]="isRouteActive('dashboard')">
               <span aria-hidden="true" class="lucca-icon icon-book"></span>
               <span class="navSide-item-link-title">Journal de bord</span>
-              <!--span class="newBadge">New</span-->
             </a>
           </li>
           <li class="navSide-item">
-            <a routerLink="/journey" class="navSide-item-link" [class.is-active]="isRouteActive('journey')">
+            <a routerLink="/map" class="navSide-item-link" [class.is-active]="isRouteActive('map')">
+              <span aria-hidden="true" class="lucca-icon icon-mapPlan"></span>
+              <span class="navSide-item-link-title">Carte des abris</span>
+            </a>
+          </li>
+          <li class="navSide-item">
+            <a routerLink="/traveler" class="navSide-item-link" [class.is-active]="isRouteActive('traveler')">
               <span aria-hidden="true" class="lucca-icon icon-transportTrain"></span>
               <span class="navSide-item-link-title">Voyageur</span>
               <div class="navSide-item-link-badgesOptional">
@@ -34,7 +39,7 @@
             </a>
           </li>
           <li class="navSide-item">
-            <a routerLink="/shelter" class="navSide-item-link" [class.is-active]="isRouteActive('shelter')">
+            <a routerLink="/host" class="navSide-item-link" [class.is-active]="isRouteActive('host')">
               <span aria-hidden="true" class="lucca-icon icon-buildingHouseStarred"></span>
               <span class="navSide-item-link-title">Hôte</span>
               <div class="navSide-item-link-badgesOptional">

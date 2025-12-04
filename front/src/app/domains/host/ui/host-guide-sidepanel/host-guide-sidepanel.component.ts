@@ -11,7 +11,7 @@ import {
 } from '@lucca-front/ng/dialog';
 
 @Component({
-  selector: 'lbnb-journey-guide-sidepanel',
+  selector: 'lbnb-host-guide-sidepanel',
   imports: [
     FormsModule,
     DialogComponent,
@@ -22,7 +22,7 @@ import {
     BoxComponent,
     ButtonComponent,
   ],
-  templateUrl: './journey-guide-sidepanel.component.html',
+  templateUrl: './host-guide-sidepanel.component.html',
 })
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
-export class JourneyGuideSidepanelComponent {}
+export class HostGuideSidepanelComponent {}

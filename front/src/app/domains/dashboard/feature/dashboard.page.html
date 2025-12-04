@@ -32,40 +32,26 @@
         </lu-fancy-box>
       </div>
       <div class="container mod-dataPage">
-        <section>
-          <header>
-            <h2>Votre prochain voyage</h2>
-          </header>
-          <div class="box pr-u-marginBlockStart100">
-            <p>Contenu à venir</p>
-          </div>
-        </section>
-        <section>
-          <header>
-            <h2>Votre prochain accueil</h2>
-          </header>
-          <div class="box pr-u-marginBlockStart100">
-            <p>Contenu à venir</p>
-          </div>
-        </section>
-        <section>
-          <header>
-            <h2>Votre passeport</h2>
-          </header>
-          <div class="box pr-u-marginBlockStart100">
-            <p>Contenu à venir</p>
-            <ul>
-              <li>l’adresse précise du logement</li>
-              <li>le type de logement (Maison/apt)</li>
-              <li>si le Luccasien aura une pièce à part ou non</li>
-              <li>le type de couchage (Lit/canapé/matelas gonflable)</li>
-              <li>l’équipement (Wifi, serviettes de bain, parking, local à vélo)</li>
-              <li>l’équipement (Wifi, serviettes de bain, parking, local à vélo)</li>
-              <li>si le logement accueille d’autres habitants (animaux, enfants, conjoints, colocs, etc)</li>
-              <li>les règles du logement : horaires, fumeur/non fumeur, etc</li>
-            </ul>
-          </div>
-        </section>
+        @if (hasNextJourney) {
+          <section>
+            <header>
+              <h2>Votre prochain voyage</h2>
+            </header>
+            <div class="box pr-u-marginBlockStart100">
+              <p>Contenu à venir</p>
+            </div>
+          </section>
+        }
+        @if (hasNextWelcome) {
+          <section>
+            <header>
+              <h2>Votre prochain accueil</h2>
+            </header>
+            <div class="box pr-u-marginBlockStart100">
+              <p>Contenu à venir</p>
+            </div>
+          </section>
+        }
       </div>
     </lu-main-layout-block>
   </ng-container>

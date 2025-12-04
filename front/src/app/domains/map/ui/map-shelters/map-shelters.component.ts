@@ -12,7 +12,7 @@ export const VIEW_TYPE = {
 export type ViewType = (typeof VIEW_TYPE)[keyof typeof VIEW_TYPE];
 
 @Component({
-  selector: 'lbnb-journey-shelters',
+  selector: 'lbnb-map-shelters',
   imports: [
     FormsModule,
     FilterBarComponent,
@@ -21,9 +21,9 @@ export type ViewType = (typeof VIEW_TYPE)[keyof typeof VIEW_TYPE];
     LuSimpleSelectInputComponent,
     DateRangeInputComponent,
   ],
-  templateUrl: './journey-shelters.component.html',
+  templateUrl: './map-shelters.component.html',
 })
-export class JourneySheltersComponent {
+export class MapSheltersComponent {
   readonly VIEW_TYPE = VIEW_TYPE;
 
   readonly view = model<ViewType>(this.VIEW_TYPE.MAP);

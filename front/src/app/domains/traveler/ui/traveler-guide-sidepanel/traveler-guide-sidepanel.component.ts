@@ -11,7 +11,7 @@ import {
 } from '@lucca-front/ng/dialog';
 
 @Component({
-  selector: 'lbnb-shelter-guide-sidepanel',
+  selector: 'lbnb-traveler-guide-sidepanel',
   imports: [
     FormsModule,
     DialogComponent,
@@ -22,7 +22,7 @@ import {
     BoxComponent,
     ButtonComponent,
   ],
-  templateUrl: './shelter-guide-sidepanel.component.html',
+  templateUrl: './traveler-guide-sidepanel.component.html',
 })
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
-export class ShelterGuideSidepanelComponent {}
+export class TravelerGuideSidepanelComponent {}
