@@ -1,0 +1,26 @@
+:host {
+  display: contents;
+}
+
+.dashboardCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+}
+
+.dashboardCard-img {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--pr-t-border-radius-default);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.dashboardCard-icon {
+  padding: calc(var(--pr-t-spacings-100) + var(--pr-t-spacings-25));
+  border-radius: var(--pr-t-border-radius-structure);
+  color: var(--palettes-product-700);
+  background-color: var(--palettes-product-100);
+}

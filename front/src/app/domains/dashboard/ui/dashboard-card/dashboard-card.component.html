@@ -1,0 +1,10 @@
+<a class="dashboardCard card mod-action" [routerLink]="card().link">
+  <div class="dashboardCard-img" [style.background-image]="`url(${card().image})`"></div>
+  <div class="pr-u-gap150 pr-u-displayFlex pr-u-alignItemsFlexStart">
+    <lu-icon class="dashboardCard-icon" size="L" [icon]="card().icon" />
+    <div>
+      <h3>{{ card().heading }}</h3>
+      <p class="pr-u-textNeutral pr-u-textS">{{ card().description }}</p>
+    </div>
+  </div>
+</a>

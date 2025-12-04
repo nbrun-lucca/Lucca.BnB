@@ -4,64 +4,108 @@
   </ng-container>
   <ng-container mainLayoutContent>
     <lu-main-layout-block>
-      <div class="container mod-dataPage">
+      <div class="container mod-dataPage pr-u-gap400">
         <lu-fancy-box
           backgroundLeft="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/background-left-bubbles.svg"
-          backgroundRight="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/background-right-candies.svg"
-          foreground="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/foreground-right-pizza.svg"
+          backgroundRight="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/background-right-bubbles.svg"
         >
-          <div class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap300">
-            <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-alignItemsCenter pr-u-gap100">
-              <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
-                <lu-icon icon="transportTrain" />
-                Voyageur
-              </h2>
-              <p><lu-numeric-badge palette="product" [value]="7" /> demandes en cours</p>
-              <a routerLink="/journey" luButton>Préparer un voyage</a>
-            </div>
-            <lu-divider vertical separatorRole />
-            <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-alignItemsCenter pr-u-gap100">
-              @if (store.isHost()) {
+          <img
+            class="dashboard-fancyImageRight"
+            ngSrc="./assets/illustrations/house.png"
+            height="100"
+            width="100"
+            alt=""
+          />
+          <img
+            class="dashboard-fancyImageLeft"
+            ngSrc="./assets/illustrations/train.png"
+            height="100"
+            width="100"
+            alt=""
+          />
+          <lu-grid columns="7">
+            <lu-grid-column colspan="3" justify="center">
+              <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-alignItemsCenter pr-u-gap100">
                 <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
-                  <lu-icon icon="buildingHouseStarred" />
-                  Hôte
+                  <lu-icon icon="transportTrain" />
+                  Voyageur
                 </h2>
-                <p><lu-numeric-badge palette="product" [value]="3" /> demandes en cours</p>
-                <a routerLink="/shelter" luButton="outlined" palette="product">Consulter mon abri</a>
-              } @else {
-                <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
-                  <lu-icon icon="buildingHouseStarred" />
-                  Non hôte
-                </h2>
-                <button type="button" luButton="outlined" palette="product" (click)="store.toggleHosting()">
-                  Devenir hôte
-                </button>
-              }
-            </div>
-          </div>
+                <p><lu-numeric-badge palette="product" [value]="7" /> demandes en cours</p>
+                <a routerLink="/journey" luButton>Préparer un voyage</a>
+              </div>
+            </lu-grid-column>
+            <lu-grid-column colspan="1">
+              <lu-divider class="dashboard-fancySeparator" vertical separatorRole />
+            </lu-grid-column>
+            <lu-grid-column colspan="3" justify="center">
+              <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-alignItemsCenter pr-u-gap100">
+                @if (store.isHost()) {
+                  <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
+                    <lu-icon icon="buildingHouseStarred" />
+                    Hôte
+                  </h2>
+                  <p><lu-numeric-badge palette="product" [value]="3" /> demandes en cours</p>
+                  <a routerLink="/shelter" luButton="outlined" palette="product">Consulter mon abri</a>
+                } @else {
+                  <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
+                    <lu-icon icon="buildingHouseStarred" />
+                    Non hôte
+                  </h2>
+                  <button type="button" luButton="outlined" palette="product" (click)="store.toggleHosting()">
+                    Devenir hôte
+                  </button>
+                }
+              </div>
+            </lu-grid-column>
+          </lu-grid>
         </lu-fancy-box>
-      </div>
-      <div class="container mod-dataPage">
-        @if (hasNextJourney) {
-          <section>
-            <header>
-              <h2>Votre prochain voyage</h2>
-            </header>
-            <div class="box pr-u-marginBlockStart100">
-              <p>Contenu à venir</p>
-            </div>
-          </section>
+        @if (hasNextJourney || (store.isHost() && hasNextWelcome)) {
+          @let colspan = hasNextJourney && store.isHost() && hasNextWelcome ? 6 : 12;
+          <div class="grid">
+            @if (hasNextJourney) {
+              <section class="grid-column" [attr.style]="`--grid-colspan: ${colspan}`">
+                <header>
+                  <h2>Votre prochain voyage</h2>
+                </header>
+                <div class="pr-u-marginBlockStart100">
+                  <lu-highlight-data
+                    heading="Chez Daniel Hernandez"
+                    value="Le 25 décembre sur Paris"
+                    illustration="calendar"
+                    valueFirst
+                    theme="dark"
+                    [bubble]="1"
+                  />
+                </div>
+              </section>
+            }
+            @if (store.isHost() && hasNextWelcome) {
+              <section class="grid-column" [attr.style]="`--grid-colspan: ${colspan}`">
+                <header>
+                  <h2>Votre prochain accueil</h2>
+                </header>
+                <div class="pr-u-marginBlockStart100">
+                  <lu-highlight-data
+                    heading="De Daniel Hernandez"
+                    value="Le 25 décembre"
+                    illustration="calendar"
+                    valueFirst
+                    theme="dark"
+                    [bubble]="1"
+                  />
+                </div>
+              </section>
+            }
+          </div>
         }
-        @if (hasNextWelcome) {
-          <section>
-            <header>
-              <h2>Votre prochain accueil</h2>
-            </header>
-            <div class="box pr-u-marginBlockStart100">
-              <p>Contenu à venir</p>
-            </div>
-          </section>
-        }
+        <ul class="grid pr-u-listReset" role="list">
+          @let colspan = store.isHost() ? 4 : 6;
+          @for (card of cards; track card.icon) {
+            <li class="grid-column pr-u-flexGrow1" [attr.style]="`--grid-colspan: ${colspan}`">
+              <lbnb-dashboard-card [card]="card" />
+            </li>
+          }
+        </ul>
       </div>
     </lu-main-layout-block>
   </ng-container>
