@@ -7,6 +7,7 @@ import { MainLayoutBlockComponent, MainLayoutComponent } from '@lucca-front/ng/m
 import { PageHeaderComponent } from '@lucca-front/ng/page-header';
 
 import { TravelerGuideSidepanelComponent } from '../ui/traveler-guide-sidepanel/traveler-guide-sidepanel.component';
+import { TravelerInfosComponent } from '../ui/traveler-infos/traveler-infos.component';
 
 @Component({
   selector: 'lbnb-traveler-page',
@@ -15,6 +16,7 @@ import { TravelerGuideSidepanelComponent } from '../ui/traveler-guide-sidepanel/
     MainLayoutComponent,
     PageHeaderComponent,
     EmptyStateSectionComponent,
+    TravelerInfosComponent,
     ButtonComponent,
     IconComponent,
   ],
@@ -22,6 +24,8 @@ import { TravelerGuideSidepanelComponent } from '../ui/traveler-guide-sidepanel/
 })
 export default class JourneyPage {
   readonly #dialog = inject(LuDialogService);
+
+  hasPassport = false;
 
   public openGuide() {
     this.#dialog.open({

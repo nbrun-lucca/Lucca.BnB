@@ -1,28 +1,25 @@
-import { NgOptimizedImage } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '@lucca-front/ng/button';
-import { CalloutComponent } from '@lucca-front/ng/callout';
-import { CalloutActionsComponent } from '@lucca-front/ng/callout';
+import { CalloutActionsComponent, CalloutComponent } from '@lucca-front/ng/callout';
 import { LuDialogService } from '@lucca-front/ng/dialog';
 import { EmptyStateSectionComponent } from '@lucca-front/ng/empty-state';
 import { IconComponent } from '@lucca-front/ng/icon';
 import { MainLayoutBlockComponent, MainLayoutComponent } from '@lucca-front/ng/main-layout';
 import { PageHeaderComponent } from '@lucca-front/ng/page-header';
-import { StatusBadgeComponent } from '@lucca-front/ng/statusBadge';
 
 import { HostGuideSidepanelComponent } from '../ui/host-guide-sidepanel/host-guide-sidepanel.component';
+import { HostInfosComponent } from '../ui/host-infos/host-infos.component';
 
 @Component({
   selector: 'lbnb-host-page',
   imports: [
-    NgOptimizedImage,
     MainLayoutBlockComponent,
     MainLayoutComponent,
     PageHeaderComponent,
     EmptyStateSectionComponent,
+    HostInfosComponent,
     CalloutComponent,
     CalloutActionsComponent,
-    StatusBadgeComponent,
     ButtonComponent,
     IconComponent,
   ],
@@ -31,7 +28,7 @@ import { HostGuideSidepanelComponent } from '../ui/host-guide-sidepanel/host-gui
 export default class HostPage {
   readonly #dialog = inject(LuDialogService);
 
-  hasShelter = true;
+  hasShelter = false;
 
   public openGuide() {
     this.#dialog.open({

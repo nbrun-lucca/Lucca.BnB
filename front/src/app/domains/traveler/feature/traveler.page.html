@@ -1,6 +1,10 @@
 <lu-main-layout footerSticky>
   <ng-container mainLayoutHeader>
-    <lu-page-header container label="Voyageur" description="Se déplacer sereinement grâce aux abris">
+    <lu-page-header
+      container
+      label="Voyageur"
+      description="Gérez vos informations et vos demandes d'abris pour se déplacer sereinement."
+    >
       <ng-container pageHeaderActions>
         <button type="button" luButton="text" (click)="openGuide()">
           <lu-icon icon="book" />
@@ -15,45 +19,48 @@
         <section>
           <header class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap100">
             <h2>Votre passeport</h2>
-            <button type="button" luButton="outlined">Gérer votre passeport</button>
+            @if (hasPassport) {
+              <button type="button" luButton="outlined">Gérer votre passeport</button>
+            }
           </header>
           <div class="box pr-u-marginBlockStart100">
-            <p>Contenu à venir</p>
-            <ul>
-              <li>l’adresse précise du logement</li>
-              <li>le type de logement (Maison/apt)</li>
-              <li>si le Luccasien aura une pièce à part ou non</li>
-              <li>le type de couchage (Lit/canapé/matelas gonflable)</li>
-              <li>l’équipement (Wifi, serviettes de bain, parking, local à vélo)</li>
-              <li>l’équipement (Wifi, serviettes de bain, parking, local à vélo)</li>
-              <li>si le logement accueille d’autres habitants (animaux, enfants, conjoints, colocs, etc)</li>
-              <li>les règles du logement : horaires, fumeur/non fumeur, etc</li>
-            </ul>
+            @if (hasPassport) {
+              <lbnb-traveler-infos />
+            } @else {
+              <lu-empty-state-section
+                icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperAction.svg"
+                heading="Aucune information enregistrée"
+                description="Renseignez vos informations de voyage pour faciliter vos futures demandes d’abri."
+              >
+                <button type="button" luButton>Enregistrer votre passeport</button>
+              </lu-empty-state-section>
+            }
           </div>
         </section>
-        <section>
-          <header>
-            <h2>Vos demandes en cours</h2>
-          </header>
-          <div class="box pr-u-marginBlockStart100">
-            <lu-empty-state-section
-              hx="3"
-              icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperActionSuccess.svg"
-              heading="Aucune demande"
-              description="Ni en cours, ni passée"
-            />
-          </div>
-        </section>
+        @if (hasPassport) {
+          <section>
+            <header>
+              <h2>Vos demandes en cours</h2>
+            </header>
+            <div class="box pr-u-marginBlockStart100">
+              <lu-empty-state-section
+                icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperActionSuccess.svg"
+                heading="Aucune demande en cours"
+                description="Vous n’avez actuellement aucune demande d’abri en attente. Vos nouvelles demandes apparaîtront ici."
+                palette="success"
+              />
+            </div>
+          </section>
+        }
         <section>
           <header>
             <h2>Vos voyages passées</h2>
           </header>
           <div class="box pr-u-marginBlockStart100">
             <lu-empty-state-section
-              hx="3"
-              icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperActionSuccess.svg"
-              heading="Aucune demande"
-              description="Ni en cours, ni passée"
+              icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaper.svg"
+              heading="Aucun voyage passé"
+              description="Lorsque vous effectuerez votre premier voyage, il apparaîtra ici sous forme d’historique."
             />
           </div>
         </section>

@@ -1,6 +1,5 @@
 import { Component, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DateRangeInputComponent } from '@lucca-front/ng/date2';
 import { FilterBarComponent, FilterPillAddonBeforeDirective, FilterPillComponent } from '@lucca-front/ng/filter-pills';
 import { LuSimpleSelectInputComponent } from '@lucca-front/ng/simple-select';
 
@@ -19,7 +18,6 @@ export type ViewType = (typeof VIEW_TYPE)[keyof typeof VIEW_TYPE];
     FilterPillAddonBeforeDirective,
     FilterPillComponent,
     LuSimpleSelectInputComponent,
-    DateRangeInputComponent,
   ],
   templateUrl: './map-shelters.component.html',
 })
