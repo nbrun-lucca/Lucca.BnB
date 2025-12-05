@@ -4,23 +4,23 @@
   </ng-container>
   <ng-container mainLayoutContent>
     <lu-main-layout-block>
-      <div class="container mod-dataPage pr-u-gap400">
+      <div class="container mod-dataPage pr-u-gap300">
         <lu-fancy-box
           backgroundLeft="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/background-left-bubbles.svg"
           backgroundRight="https://cdn.lucca.fr/transverse/prisme/visuals/fancy-box/background-right-bubbles.svg"
         >
           <img
             class="dashboard-fancyImageRight"
-            ngSrc="./assets/illustrations/house.png"
-            height="100"
-            width="100"
+            ngSrc="./assets/illustrations/manyKeys.png"
+            height="120"
+            width="120"
             alt=""
           />
           <img
             class="dashboard-fancyImageLeft"
-            ngSrc="./assets/illustrations/train.png"
+            ngSrc="./assets/illustrations/diapo.png"
             height="100"
-            width="100"
+            width="90"
             alt=""
           />
           <lu-grid columns="7">
@@ -30,7 +30,12 @@
                   <lu-icon icon="transportTrain" />
                   Voyageur
                 </h2>
-                <p><lu-numeric-badge palette="product" [value]="7" /> demandes en cours</p>
+                @let nbRequest = store.traveler()?.requests?.length;
+                @if (nbRequest) {
+                  <p><lu-numeric-badge palette="product" [value]="nbRequest" /> demandes en cours</p>
+                } @else {
+                  <p>Aucune demande en cours</p>
+                }
                 <a routerLink="/journey" luButton>Préparer un voyage</a>
               </div>
             </lu-grid-column>
@@ -44,8 +49,13 @@
                     <lu-icon icon="buildingHouseStarred" />
                     Hôte
                   </h2>
-                  <p><lu-numeric-badge palette="product" [value]="3" /> demandes en cours</p>
-                  <a routerLink="/shelter" luButton="outlined" palette="product">Consulter mon abri</a>
+                  @let nbRequest = store.traveler()?.requests?.length;
+                  @if (nbRequest) {
+                    <p><lu-numeric-badge palette="product" [value]="nbRequest" /> demandes en cours</p>
+                  } @else {
+                    <p>Aucune demande en cours</p>
+                  }
+                  <a routerLink="/host" luButton="outlined" palette="product">Consulter mon abri</a>
                 } @else {
                   <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap50">
                     <lu-icon icon="buildingHouseStarred" />
@@ -63,38 +73,30 @@
           @let colspan = hasNextJourney && store.isHost() && hasNextWelcome ? 6 : 12;
           <div class="grid">
             @if (hasNextJourney) {
-              <section class="grid-column" [attr.style]="`--grid-colspan: ${colspan}`">
-                <header>
-                  <h2>Votre prochain voyage</h2>
-                </header>
-                <div class="pr-u-marginBlockStart100">
-                  <lu-highlight-data
-                    heading="Chez Daniel Hernandez"
-                    value="Le 25 décembre sur Paris"
-                    illustration="calendar"
-                    valueFirst
-                    theme="dark"
-                    [bubble]="1"
-                  />
-                </div>
-              </section>
+              <div class="grid-column" [attr.style]="`--grid-colspan: ${colspan}`">
+                <lu-highlight-data
+                  heading="Votre prochain voyage"
+                  value="Le 25 décembre"
+                  subText="Chez Daniel Hernandez, à Paris"
+                  illustration="calendar"
+                  theme="dark"
+                  size="S"
+                  [bubble]="1"
+                />
+              </div>
             }
             @if (store.isHost() && hasNextWelcome) {
-              <section class="grid-column" [attr.style]="`--grid-colspan: ${colspan}`">
-                <header>
-                  <h2>Votre prochain accueil</h2>
-                </header>
-                <div class="pr-u-marginBlockStart100">
-                  <lu-highlight-data
-                    heading="De Daniel Hernandez"
-                    value="Le 25 décembre"
-                    illustration="calendar"
-                    valueFirst
-                    theme="dark"
-                    [bubble]="1"
-                  />
-                </div>
-              </section>
+              <div class="grid-column" [attr.style]="`--grid-colspan: ${colspan}`">
+                <lu-highlight-data
+                  heading="Votre prochain accueil"
+                  value="Le 25 décembre"
+                  subText="De Daniel Hernandez"
+                  illustration="coffee"
+                  theme="dark"
+                  size="S"
+                  [bubble]="1"
+                />
+              </div>
             }
           </div>
         }
