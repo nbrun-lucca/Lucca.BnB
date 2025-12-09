@@ -19,25 +19,16 @@
         <section>
           <header class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap100">
             <h2>Votre passeport</h2>
-            @if (hasPassport) {
+            @if (store.traveler()?.user && !store.traveler()?.passport) {
+              <a luLink external>Consulter votre dossier RH</a>
+            }
+            @if (store.traveler()?.passport) {
               <button type="button" luButton="outlined">Gérer votre passeport</button>
             }
           </header>
-          <div class="box pr-u-marginBlockStart100">
-            @if (hasPassport) {
-              <lbnb-traveler-infos />
-            } @else {
-              <lu-empty-state-section
-                icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperAction.svg"
-                heading="Aucune information enregistrée"
-                description="Renseignez vos informations de voyage pour faciliter vos futures demandes d’abri."
-              >
-                <button type="button" luButton>Enregistrer votre passeport</button>
-              </lu-empty-state-section>
-            }
-          </div>
+          <lbnb-traveler-infos />
         </section>
-        @if (hasPassport) {
+        @if (store.traveler()?.passport) {
           <section>
             <header>
               <h2>Vos demandes en cours</h2>

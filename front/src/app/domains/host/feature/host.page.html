@@ -36,25 +36,13 @@
         <section>
           <header class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap100">
             <h2>Votre abri</h2>
-            @if (hasShelter) {
+            @if (store.host()?.shelter) {
               <button type="button" luButton="outlined">Gérer votre abri</button>
             }
           </header>
-          <div class="box pr-u-marginBlockStart100">
-            @if (hasShelter) {
-              <lbnb-host-infos />
-            } @else {
-              <lu-empty-state-section
-                icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperAction.svg"
-                heading="Aucun abri configuré"
-                description="Vous devez configurer un abri avant de pouvoir recevoir des demandes de voyageurs."
-              >
-                <button type="button" luButton>Configurer votre abri</button>
-              </lu-empty-state-section>
-            }
-          </div>
+          <lbnb-host-infos />
         </section>
-        @if (hasShelter) {
+        @if (store.host()?.shelter) {
           <section>
             <header>
               <h2>Vos demandes en cours</h2>

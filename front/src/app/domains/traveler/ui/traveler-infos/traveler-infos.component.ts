@@ -1,11 +1,16 @@
-import { NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
-import { StatusBadgeComponent } from '@lucca-front/ng/statusBadge';
+import { Component, inject } from '@angular/core';
+import { AppStore } from '@app/shared/data/stores/app.store';
+import { ButtonComponent } from '@lucca-front/ng/button';
+import { EmptyStateSectionComponent } from '@lucca-front/ng/empty-state';
+import { LinkComponent } from '@lucca-front/ng/link';
+import { LuUserDisplayModule, LuUserTileComponent } from '@lucca-front/ng/user';
 
 @Component({
   selector: 'lbnb-traveler-infos',
-  imports: [NgOptimizedImage, StatusBadgeComponent],
+  imports: [EmptyStateSectionComponent, LuUserDisplayModule, LuUserTileComponent, LinkComponent, ButtonComponent],
   templateUrl: './traveler-infos.component.html',
+  styleUrl: './traveler-infos.component.scss',
 })
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
-export class TravelerInfosComponent {}
+export class TravelerInfosComponent {
+  readonly store = inject(AppStore);
+}

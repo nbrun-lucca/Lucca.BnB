@@ -40,8 +40,6 @@ export default class HostPage {
   readonly store = inject(AppStore);
   readonly #dialog = inject(LuDialogService);
 
-  hasShelter = false;
-
   public openGuide() {
     this.#dialog.open({
       content: HostGuideSidepanelComponent,

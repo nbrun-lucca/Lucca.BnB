@@ -1,52 +1,36 @@
-<div class="pr-u-displayFlex pr-u-gap300">
-  <div class="dataTableWrapper mod-nested">
-    <div class="dataTable">
-      <div class="dataTable-head">
-        <div class="dataTable-head-row">
-          <div class="dataTable-head-row-cell">
-            <div class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap100">
-              <h4 class="pr-u-ellipsis">Ma petite maison</h4>
-              <lu-status-badge label="Proposé" palette="success" />
+<div class="travelerInfos box pr-u-marginBlockStart100">
+  @if (store.traveler()?.passport; as passport) {
+    <div class="travelerInfos-table dataTableWrapper mod-nested">
+      <div class="dataTable">
+        <div class="dataTable-head">
+          <div class="dataTable-head-row pr">
+            <div class="dataTable-head-row-cell">
+              @if (store.traveler()?.user; as user) {
+                <lu-user-tile [user]="user" />
+              }
+            </div>
+            <div class="dataTable-head-row-cell">
+              @if (store.traveler()?.user; as user) {
+                <a luLink external>Consulter votre dossier RH</a>
+              }
             </div>
           </div>
         </div>
-      </div>
-      <div class="dataTable-body pr-u-textS">
-        <dl class="dataTable-body-row">
-          <dt class="dataTable-head-row-cell">Adresse</dt>
-          <dd class="dataTable-head-row-cell pag-u-textNeutral800">151-157 Av. de France, 75013 Paris</dd>
-        </dl>
-        <dl class="dataTable-body-row">
-          <dt class="dataTable-head-row-cell">Type de logement</dt>
-          <dd class="dataTable-head-row-cell pag-u-textNeutral800">Maison | Appartement</dd>
-        </dl>
-        <dl class="dataTable-body-row">
-          <dt class="dataTable-head-row-cell">Pièce à part</dt>
-          <dd class="dataTable-head-row-cell pag-u-textNeutral800">Oui | Non</dd>
-        </dl>
-        <dl class="dataTable-body-row">
-          <dt class="dataTable-head-row-cell">Type de couchage</dt>
-          <dd class="dataTable-head-row-cell pag-u-textNeutral800">Lit | Canapé | Matelas gonflable</dd>
-        </dl>
-        <dl class="dataTable-body-row">
-          <dt class="dataTable-head-row-cell">Equipement</dt>
-          <dd class="dataTable-head-row-cell pag-u-textNeutral800">Wifi, serviettes de bain, parking, local à vélo</dd>
-        </dl>
-        <dl class="dataTable-body-row">
-          <dt class="dataTable-head-row-cell">Autres habitants</dt>
-          <dd class="dataTable-head-row-cell pag-u-textNeutral800">Animaux, enfants, conjoints, colocs, etc</dd>
-        </dl>
-        <dl class="dataTable-body-row">
-          <dt class="dataTable-head-row-cell">Autres infos, règles</dt>
-          <dd class="dataTable-head-row-cell pag-u-textNeutral800">Horaires de sommeil, fumeur/non fumeur, etc</dd>
-        </dl>
+        <div class="dataTable-body pr-u-textS">
+          <dl class="dataTable-body-row">
+            <dt class="dataTable-head-row-cell">Autres infos</dt>
+            <dd class="dataTable-head-row-cell pag-u-textNeutral800">{{ passport.otherPreferences }}</dd>
+          </dl>
+        </div>
       </div>
     </div>
-  </div>
-  <img
-    height="300"
-    width="650"
-    ngSrc="https://www.maisons-pierre.com/wp-content/uploads/2021/04/1300x600-maisons-pierre-lemag-quel-type-maison-choisir-couv.jpg"
-    alt=""
-  />
+  } @else {
+    <lu-empty-state-section
+      icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperAction.svg"
+      heading="Aucune information enregistrée"
+      description="Renseignez vos informations de voyage pour faciliter vos futures demandes d’abri."
+    >
+      <button type="button" luButton>Enregistrer votre passeport</button>
+    </lu-empty-state-section>
+  }
 </div>

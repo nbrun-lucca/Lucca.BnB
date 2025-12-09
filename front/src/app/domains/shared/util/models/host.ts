@@ -11,8 +11,10 @@ export interface Shelter {
   photo: string;
   adress: string;
   type: string;
-  roomAtSide: boolean;
+  hasRoomSide: boolean;
+  sleepingType: string;
   equipment: string;
-  othersRoomates: string;
-  othersInfos: string;
+  durationInfos?: string;
+  othersRoomates?: string;
+  othersInfos?: string;
 }

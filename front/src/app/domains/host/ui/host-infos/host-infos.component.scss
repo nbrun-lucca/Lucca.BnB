@@ -1,0 +1,14 @@
+:host {
+  display: contents;
+}
+
+.hostInfos {
+  background-image: url('/lucca-bnb/static/assets/illustrations/bubbles_host.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 12rem;
+}
+
+.hostInfos-table {
+  max-width: calc(100% - 12rem - var(--pr-t-spacings-300));
+}
