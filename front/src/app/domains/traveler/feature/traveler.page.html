@@ -19,12 +19,7 @@
         <section>
           <header class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap100">
             <h2>Votre passeport</h2>
-            @if (store.traveler()?.user && !store.traveler()?.passport) {
-              <a luLink external>Consulter votre dossier RH</a>
-            }
-            @if (store.traveler()?.passport) {
-              <button type="button" luButton="outlined">Gérer votre passeport</button>
-            }
+            <button type="button" luButton="outlined">Gérer votre passeport</button>
           </header>
           <lbnb-traveler-infos />
         </section>
