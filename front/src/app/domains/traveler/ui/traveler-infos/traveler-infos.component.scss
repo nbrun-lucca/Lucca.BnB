@@ -3,12 +3,56 @@
 }
 
 .travelerInfos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-t-spacings-200);
   background-image: url('/lucca-bnb/static/assets/illustrations/bubbles_traveler.png');
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: 12rem;
 }
 
-.travelerInfos-table {
+.travelerInfos-section {
   max-width: calc(100% - 12rem - var(--pr-t-spacings-300));
+}
+
+.pinnedPhoto {
+  position: relative;
+  top: calc(var(--pr-t-spacings-300) * -1);
+  transform: rotate(-10deg);
+  align-self: start;
+  justify-self: end;
+  width: min(10rem, 60vw);
+  border: solid 4px var(--palettes-neutral-0);
+  border-radius: var(--pr-t-border-radius-default);
+  box-shadow: var(--pr-t-elevation-shadow-raised);
+}
+
+.pinnedPhoto-img {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--pr-t-border-radius-default);
+  background-image: var(--site-image-url);
+  background-position: center;
+  background-size: cover;
+}
+
+.pinnedPhoto-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-color: rgb(var(--colors-neutral-900-rgb), 0.2);
+  transition: opacity ease-in 0.25s;
+}
+
+.pinnedPhoto::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--pr-t-spacings-150) * -1);
+  right: 1rem;
+  width: 1rem;
+  height: 2.5rem;
+  background-image: url('/lucca-bnb/static/assets/illustrations/trombonne-photo.svg');
 }

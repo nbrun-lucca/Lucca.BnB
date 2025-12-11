@@ -1,36 +1,83 @@
 <div class="travelerInfos box pr-u-marginBlockStart100">
-  @if (store.traveler()?.passport; as passport) {
-    <div class="travelerInfos-table dataTableWrapper mod-nested">
-      <div class="dataTable">
-        <div class="dataTable-head">
-          <div class="dataTable-head-row pr">
-            <div class="dataTable-head-row-cell">
-              @if (store.traveler()?.user; as user) {
-                <lu-user-tile [user]="user" />
-              }
-            </div>
-            <div class="dataTable-head-row-cell">
-              @if (store.traveler()?.user; as user) {
-                <a luLink external>Consulter votre dossier RH</a>
-              }
-            </div>
-          </div>
-        </div>
-        <div class="dataTable-body pr-u-textS">
-          <dl class="dataTable-body-row">
-            <dt class="dataTable-head-row-cell">Autres infos</dt>
-            <dd class="dataTable-head-row-cell pag-u-textNeutral800">{{ passport.otherPreferences }}</dd>
+  @if (store.traveler()?.user; as user) {
+    <div class="pr-u-displayFlex pr-u-gap500">
+      <div class="pinnedPhoto">
+        <div class="pinnedPhoto-img" [attr.style]="`--site-image-url: url(${user.pictureHref})`"></div>
+      </div>
+      <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
+        <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+        @if (store.traveler()?.email; as email) {
+          <dl class="pr-u-margin0">
+            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Mail</dt>
+            <dd class="pr-u-margin0">{{ email }}</dd>
           </dl>
-        </div>
+        }
+        @if (store.traveler()?.phoneNumber; as phoneNumber) {
+          <dl class="pr-u-margin0">
+            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Téléphone</dt>
+            <dd class="pr-u-margin0">{{ phoneNumber }}</dd>
+          </dl>
+        }
+        <a luLink external>Consulter votre dossier RH</a>
       </div>
     </div>
-  } @else {
-    <lu-empty-state-section
-      icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperAction.svg"
-      heading="Aucune information enregistrée"
-      description="Renseignez vos informations de voyage pour faciliter vos futures demandes d’abri."
-    >
-      <button type="button" luButton>Enregistrer votre passeport</button>
-    </lu-empty-state-section>
+  }
+  @if (store.traveler()?.passport; as passport) {
+    <lu-divider separatorRole />
+    <h3>Autres infos et préférences</h3>
+    <lu-grid columns="3">
+      @if (passport.sleepPreferences) {
+        <lu-grid-column class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
+          <dl class="pr-u-margin0">
+            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Lève-tôt</dt>
+            <dd class="pr-u-margin0">
+              {{ passport.sleepPreferences.isEarlyBird ? 'Oui' : 'Non' }}
+            </dd>
+          </dl>
+          <dl class="pr-u-margin0">
+            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Couche-tard</dt>
+            <dd class="pr-u-margin0">
+              {{ passport.sleepPreferences.isNightOwl ? 'Oui' : 'Non' }}
+            </dd>
+          </dl>
+          @if (passport.sleepPreferences.sleepNotes; as sleepNotes) {
+            <dl class="pr-u-margin0">
+              <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Autres infos</dt>
+              <dd class="pr-u-margin0">{{ sleepNotes }}</dd>
+            </dl>
+          }
+        </lu-grid-column>
+      }
+      @if (passport.allergiesAndDiet) {
+        <lu-grid-column class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
+          <dl class="pr-u-margin0">
+            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Allergie aux animaux</dt>
+            <dd class="pr-u-margin0">
+              {{ passport.allergiesAndDiet.hasPetAllergy ? 'Oui' : 'Non' }}
+            </dd>
+          </dl>
+          @if (passport.allergiesAndDiet.otherAllergies; as otherAllergies) {
+            <dl class="pr-u-margin0">
+              <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Autres allergies</dt>
+              <dd class="pr-u-margin0">{{ otherAllergies }}</dd>
+            </dl>
+          }
+          <dl class="pr-u-margin0">
+            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Régime</dt>
+            <dd class="pr-u-margin0">
+              {{ passport.allergiesAndDiet.dietType }}
+            </dd>
+          </dl>
+        </lu-grid-column>
+        @if (passport.otherPreferences; as otherPreferences) {
+          <lu-grid-column class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
+            <dl class="pr-u-margin0">
+              <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Note personnelle</dt>
+              <dd class="pr-u-margin0">{{ otherPreferences }}</dd>
+            </dl>
+          </lu-grid-column>
+        }
+      }
+    </lu-grid>
   }
 </div>
