@@ -23,8 +23,8 @@
     </div>
   }
   @if (store.traveler()?.passport; as passport) {
-    <lu-divider separatorRole />
-    <h3>Autres infos et préférences</h3>
+    <lu-divider separatorRole class="pr-u-marginBlock200" />
+    <h3 class="pr-u-marginBlockEnd100">Autres infos et préférences</h3>
     <lu-grid columns="3">
       @if (passport.sleepPreferences) {
         <lu-grid-column class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">

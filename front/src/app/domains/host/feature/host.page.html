@@ -35,7 +35,10 @@
       <div class="container mod-dataPage">
         <section>
           <header class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap100">
-            <h2>Votre hébergement</h2>
+            <h2 class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap150">
+              <span>Votre hébergement</span>
+              <lu-status-badge label="Proposé" palette="success" />
+            </h2>
             @if (store.host()?.shelter) {
               <button type="button" luButton="outlined">Gérer votre hébergement</button>
             }

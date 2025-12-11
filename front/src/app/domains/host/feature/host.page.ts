@@ -12,6 +12,7 @@ import { EmptyStateSectionComponent } from '@lucca-front/ng/empty-state';
 import { IconComponent } from '@lucca-front/ng/icon';
 import { MainLayoutBlockComponent, MainLayoutComponent } from '@lucca-front/ng/main-layout';
 import { PageHeaderComponent } from '@lucca-front/ng/page-header';
+import { StatusBadgeComponent } from '@lucca-front/ng/statusBadge';
 import { LuTooltipTriggerDirective } from '@lucca-front/ng/tooltip';
 
 import { HostDeactivationDialogComponent } from '../ui/host-deactivation-dialog/host-deactivation-dialog.component';
@@ -31,6 +32,7 @@ import { HostInfosComponent } from '../ui/host-infos/host-infos.component';
     DropdownActionComponent,
     LuTooltipTriggerDirective,
     HostInfosComponent,
+    StatusBadgeComponent,
     ButtonComponent,
     IconComponent,
   ],

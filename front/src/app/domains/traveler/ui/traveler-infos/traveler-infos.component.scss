@@ -3,17 +3,10 @@
 }
 
 .travelerInfos {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pr-t-spacings-200);
-  background-image: url('/lucca-bnb/static/assets/illustrations/bubbles_traveler.png');
+  // background-image: url('/lucca-bnb/static/assets/illustrations/bubbles_traveler.png');
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: 12rem;
-}
-
-.travelerInfos-section {
-  max-width: calc(100% - 12rem - var(--pr-t-spacings-300));
 }
 
 .pinnedPhoto {
