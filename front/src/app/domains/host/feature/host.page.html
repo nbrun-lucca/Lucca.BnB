@@ -1,6 +1,6 @@
 <lu-main-layout footerSticky>
   <ng-container mainLayoutHeader>
-    <lu-page-header container label="Hôte" description="Ouvrez votre abri et accueillez des voyageurs.">
+    <lu-page-header container label="Hôte" description="Proposez un hébergement et accueillez des voyageurs.">
       <ng-container pageHeaderActions>
         <button type="button" luButton="text" (click)="openGuide()">
           <lu-icon icon="book" />
@@ -35,9 +35,9 @@
       <div class="container mod-dataPage">
         <section>
           <header class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap100">
-            <h2>Votre abri</h2>
+            <h2>Votre hébergement</h2>
             @if (store.host()?.shelter) {
-              <button type="button" luButton="outlined">Gérer votre abri</button>
+              <button type="button" luButton="outlined">Gérer votre hébergement</button>
             }
           </header>
           <lbnb-host-infos />
@@ -51,7 +51,7 @@
               <lu-empty-state-section
                 icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperActionSuccess.svg"
                 heading="Aucune demande pour le moment"
-                description="Vous n’avez actuellement aucune demande d'abri à traiter. Les nouvelles demandes apparaîtront ici dès leur réception."
+                description="Vous n’avez actuellement aucune demande d'hébergement à traiter. Les nouvelles demandes apparaîtront ici dès leur réception."
                 palette="success"
               />
             </div>

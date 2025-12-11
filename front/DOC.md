@@ -1,13 +1,13 @@
 ADMIN
 
 - Choix des informations avant et après validation de la demande
-- Suppression des abris
+- Suppression des hébergements
 - Ajout de lieux significatifs
 
 HOTE
 
 - Ne plus être hôte
-- Ajouter un abri
+- Ajouter un hébergement
   - l’adresse précise du logement
   - le type de logement (Maison/apt)
   - si le Luccasien aura une pièce à part ou non
@@ -15,7 +15,7 @@ HOTE
   - l’équipement (Wifi, serviettes de bain, parking, local à vélo)
   - si le logement accueille d’autres habitants (animaux, enfants, conjoints, colocs, etc)
   - les règles du logement : horaires, fumeur/non fumeur, etc
-- Consulter les demandes d'un abri
+- Consulter les demandes d'un hébergement
   - Accepter une demande ou non
 - Consulter le guide de l'hôte
   ## Guide de l’hôte
@@ -28,7 +28,7 @@ HOTE
 VOYAGEUR
 
 - Devenir hôte
-- Chercher un abri
+- Chercher un hébergement
 - Consulter une carte BnB / la liste
   - Sélectionner un hôte sur la carte (ou via des filtres date + site) et voir les infos en sidepanel
   - Créer une demande

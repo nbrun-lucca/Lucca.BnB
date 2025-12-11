@@ -50,8 +50,8 @@ export default class DashboardPage implements OnInit {
         icon: 'mapPlan',
         image: 'https://cartes.app/_next/image?url=%2Fblog-images%2Ffrance-google.png&w=3840&q=75',
         link: '/map',
-        heading: 'Carte des abris',
-        description: 'Repérez rapidement les abris disponibles autour de votre destination.',
+        heading: 'Carte des hébergements',
+        description: 'Repérez rapidement les hébergements disponibles autour de votre destination.',
       },
       {
         icon: 'transportTrain',
@@ -59,7 +59,7 @@ export default class DashboardPage implements OnInit {
           'https://media.istockphoto.com/id/1465916031/fr/photo/le-chemin-de-lavion.jpg?s=612x612&w=0&k=20&c=z9VJkarwdKyKzZJ4GJyRYQ08wLP3A6JJp8i3i5b-vgo=',
         link: '/traveler',
         heading: 'Voyageur',
-        description: `Gérez vos informations et vos demandes d'abris pour se déplacer sereinement.`,
+        description: `Gérez vos informations et vos demandes d'hébergement pour se déplacer sereinement.`,
       },
     ];
     if (this.store.isHost()) {
@@ -69,7 +69,7 @@ export default class DashboardPage implements OnInit {
           'https://tourisme-isleperigord.com/wp-content/uploads/tourisme/chambre-d-hotes-chez-kinou-neuvic--6--2.jpg',
         link: '/host',
         heading: 'Hôte',
-        description: 'Ouvrez votre abri et accueillez des voyageurs.',
+        description: 'Proposez un hébergement et accueillez des voyageurs.',
       });
     }
   }

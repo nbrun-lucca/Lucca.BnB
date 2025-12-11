@@ -5,8 +5,8 @@ import type { Request } from './request';
 export interface Traveler {
   id: number;
   user: LuUserTileUserInput;
-  phoneNumber?: string;
   email?: string;
+  phoneNumber?: string;
   requests: Request[];
   passport: Passport | null;
 }
@@ -17,32 +17,11 @@ export interface Passport {
     isNightOwl?: boolean;
     sleepNotes?: string;
   };
-  comfortPreferences?: {
-    okWithSofaBed?: boolean;
-    okWithSharedRoom?: boolean;
-    okWithPetsAtHome?: boolean;
-    okWithChildrenAtHome?: boolean;
-    okWithSmokersHome?: boolean;
-    comfortNotes?: string;
-  };
   allergiesAndDiet?: {
     hasPetAllergy?: boolean;
     otherAllergies?: string;
-    dietType?: 'none' | 'vegetarian' | 'vegan' | 'noPork' | 'noAlcohol' | 'other';
+    dietType?: 'Aucun' | 'Végétarien' | 'Végan' | 'Pas de porc' | 'Autre';
     dietNotes?: string;
-  };
-  socialPreferences?: {
-    prefersAutonomy?: boolean;
-    openToSharedMeals?: boolean;
-    interactionNotes?: string;
-  };
-  accessibility?: {
-    hasMobilityConstraints?: boolean;
-    mobilityNotes?: string;
-  };
-  communication?: {
-    preferredLanguages?: string[];
-    languageNotes?: string;
   };
   otherPreferences?: string;
   lastUpdatedAt?: Date;
