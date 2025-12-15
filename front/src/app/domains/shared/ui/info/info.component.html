@@ -1,0 +1,15 @@
+<div class="pr-u-displayFlex pr-u-gap150">
+  @if (icon(); as icon) {
+    <lu-icon size="XS" color="light" [icon]="icon" />
+  } @else if (hasEmptyIcon()) {
+    <lu-icon size="XS" icon="mathsMinus" class="pr-u-visibilityHidden" />
+  }
+  <dl class="pr-u-margin0">
+    <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">
+      {{ heading() }}
+    </dt>
+    <dd class="pr-u-margin0">
+      <ng-container *luPortal="description()" />
+    </dd>
+  </dl>
+</div>

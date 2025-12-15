@@ -12,7 +12,7 @@
 .pinnedPhoto {
   position: relative;
   top: calc(var(--pr-t-spacings-300) * -1);
-  transform: rotate(-10deg);
+  transform: rotate(-5deg);
   align-self: start;
   justify-self: end;
   width: min(10rem, 60vw);

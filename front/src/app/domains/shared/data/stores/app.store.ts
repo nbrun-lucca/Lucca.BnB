@@ -54,6 +54,7 @@ export const AppStore = signalStore(
               'https://www.maisons-pierre.com/wp-content/uploads/2021/04/1300x600-maisons-pierre-lemag-quel-type-maison-choisir-couv.jpg',
             name: 'Ma petite maison',
             adress: '151-157 Av. de France, 75013 Paris',
+            adressHref: 'https://maps.app.goo.gl/fVSoDXoW21W6bTAB7',
             type: 'Maison | Appartement',
             hasRoomSide: true,
             sleepingType: 'Lit | Canapé | Matelas gonflable',

@@ -7,16 +7,10 @@
       <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
         <h3>{{ user.firstName }} {{ user.lastName }}</h3>
         @if (store.traveler()?.email; as email) {
-          <dl class="pr-u-margin0">
-            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Mail</dt>
-            <dd class="pr-u-margin0">{{ email }}</dd>
-          </dl>
+          <lbnb-info heading="Courriel" [description]="email" />
         }
         @if (store.traveler()?.phoneNumber; as phoneNumber) {
-          <dl class="pr-u-margin0">
-            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Téléphone</dt>
-            <dd class="pr-u-margin0">{{ phoneNumber }}</dd>
-          </dl>
+          <lbnb-info heading="Téléphone" [description]="phoneNumber" />
         }
         <a luLink external>Consulter votre dossier RH</a>
       </div>
@@ -28,53 +22,38 @@
     <lu-grid columns="3">
       @if (passport.sleepPreferences) {
         <lu-grid-column class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
-          <dl class="pr-u-margin0">
-            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Lève-tôt</dt>
-            <dd class="pr-u-margin0">
-              {{ passport.sleepPreferences.isEarlyBird ? 'Oui' : 'Non' }}
-            </dd>
-          </dl>
-          <dl class="pr-u-margin0">
-            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Couche-tard</dt>
-            <dd class="pr-u-margin0">
-              {{ passport.sleepPreferences.isNightOwl ? 'Oui' : 'Non' }}
-            </dd>
-          </dl>
+          <lbnb-info
+            icon="hotelBed"
+            heading="Lève-tôt"
+            [description]="passport.sleepPreferences.isEarlyBird ? 'Oui' : 'Non'"
+          />
+          <lbnb-info
+            heading="Couche-tard"
+            [hasEmptyIcon]="true"
+            [description]="passport.sleepPreferences.isNightOwl ? 'Oui' : 'Non'"
+          />
           @if (passport.sleepPreferences.sleepNotes; as sleepNotes) {
-            <dl class="pr-u-margin0">
-              <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Autres infos</dt>
-              <dd class="pr-u-margin0">{{ sleepNotes }}</dd>
-            </dl>
+            <lbnb-info heading="Autres infos" [hasEmptyIcon]="true" [description]="sleepNotes" />
           }
         </lu-grid-column>
       }
       @if (passport.allergiesAndDiet) {
         <lu-grid-column class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
-          <dl class="pr-u-margin0">
-            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Allergie aux animaux</dt>
-            <dd class="pr-u-margin0">
-              {{ passport.allergiesAndDiet.hasPetAllergy ? 'Oui' : 'Non' }}
-            </dd>
-          </dl>
+          <lbnb-info
+            icon="medicalDoctor"
+            heading="Allergie aux animaux"
+            [description]="passport.allergiesAndDiet.hasPetAllergy ? 'Oui' : 'Non'"
+          />
           @if (passport.allergiesAndDiet.otherAllergies; as otherAllergies) {
-            <dl class="pr-u-margin0">
-              <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Autres allergies</dt>
-              <dd class="pr-u-margin0">{{ otherAllergies }}</dd>
-            </dl>
+            <lbnb-info heading="Autres allergies" [hasEmptyIcon]="true" [description]="otherAllergies" />
           }
-          <dl class="pr-u-margin0">
-            <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Régime</dt>
-            <dd class="pr-u-margin0">
-              {{ passport.allergiesAndDiet.dietType }}
-            </dd>
-          </dl>
+          @if (passport.allergiesAndDiet.dietType; as dietType) {
+            <lbnb-info icon="foodCutlery" heading="Régime alimentaire" [hasEmptyIcon]="true" [description]="dietType" />
+          }
         </lu-grid-column>
         @if (passport.otherPreferences; as otherPreferences) {
           <lu-grid-column class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
-            <dl class="pr-u-margin0">
-              <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Note personnelle</dt>
-              <dd class="pr-u-margin0">{{ otherPreferences }}</dd>
-            </dl>
+            <lbnb-info icon="signInfo" heading="Note personnelle" [description]="otherPreferences" />
           </lu-grid-column>
         }
       }

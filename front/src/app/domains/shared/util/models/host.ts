@@ -10,6 +10,7 @@ export interface Shelter {
   name: string;
   photo: string;
   adress: string;
+  adressHref?: string;
   type: string;
   hasRoomSide: boolean;
   sleepingType: string;

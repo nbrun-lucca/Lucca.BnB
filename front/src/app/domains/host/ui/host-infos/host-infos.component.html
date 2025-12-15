@@ -1,49 +1,27 @@
 <div class="hostInfos box pr-u-marginBlockStart100">
   @if (store.host()?.shelter; as shelter) {
     <div class="hostInfos-content">
-      <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
-        <dl class="pr-u-margin0">
-          <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Adresse</dt>
-          <dd class="pr-u-margin0">
-            {{ shelter.adress }}
-          </dd>
-        </dl>
-        <dl class="pr-u-margin0">
-          <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Type de logement</dt>
-          <dd class="pr-u-margin0">
-            {{ shelter.type }}
-          </dd>
-        </dl>
-        <dl class="pr-u-margin0">
-          <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Pièce à part</dt>
-          <dd class="pr-u-margin0">
-            {{ shelter.hasRoomSide ? 'Oui' : 'Non' }}
-          </dd>
-        </dl>
-        <dl class="pr-u-margin0">
-          <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Type de couchage</dt>
-          <dd class="pr-u-margin0">
-            {{ shelter.sleepingType }}
-          </dd>
-        </dl>
-        <dl class="pr-u-margin0">
-          <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Equipement</dt>
-          <dd class="pr-u-margin0">
-            {{ shelter.equipment }}
-          </dd>
-        </dl>
-        <dl class="pr-u-margin0">
-          <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Autres habitants</dt>
-          <dd class="pr-u-margin0">
-            {{ shelter.othersRoomates }}
-          </dd>
-        </dl>
-        <dl class="pr-u-margin0">
-          <dt class="pr-u-textXS pr-u-fontWeight600 pag-u-textNeutral600">Autres infos, règles</dt>
-          <dd class="pr-u-margin0">
-            {{ shelter.othersInfos }}
-          </dd>
-        </dl>
+      <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap200">
+        <lbnb-info icon="mapPin" heading="Adresse" [description]="adress" />
+        <ng-template #adress>
+          @if (shelter.adressHref) {
+            <a luLink external [href]="shelter.adressHref">{{ shelter.adress }}</a>
+          } @else {
+            <span>{{ shelter.adress }}</span>
+          }
+        </ng-template>
+        <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
+          <lbnb-info icon="buildingHouse" heading="Type de logement" [description]="shelter.type" />
+          <lbnb-info heading="Pièce à part" [hasEmptyIcon]="true" [description]="shelter.hasRoomSide ? 'Oui' : 'Non'" />
+          <lbnb-info heading="Type de couchage" [hasEmptyIcon]="true" [description]="shelter.sleepingType" />
+          <lbnb-info heading="Equipement" [hasEmptyIcon]="true" [description]="shelter.equipment" />
+          @if (shelter.othersRoomates; as othersRoomates) {
+            <lbnb-info heading="Autres habitants" [hasEmptyIcon]="true" [description]="shelter.othersRoomates" />
+          }
+        </div>
+        @if (shelter.othersInfos; as othersInfos) {
+          <lbnb-info icon="signInfo" heading="Infos complémentaires" [description]="shelter.othersInfos" />
+        }
       </div>
       @if (shelter.photo) {
         <div class="pinnedPhoto">
