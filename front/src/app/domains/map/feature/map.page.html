@@ -2,9 +2,31 @@
   <ng-container mainLayoutHeader>
     <lu-page-header
       container
-      label="Carte des hébergements"
+      label="Hébergements"
       description="Repérez rapidement les hébergements disponibles autour de votre destination."
-    />
+    >
+      <ng-container pageHeaderActions>
+        <form class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap100">
+          <ng-template #mapLabel>
+            <lu-icon icon="mapPlan" alt="Vue carte" />
+          </ng-template>
+          <ng-template #listLabel>
+            <lu-icon icon="app" alt="Vue liste" />
+          </ng-template>
+          <lu-segmented-control [ngModelOptions]="{ standalone: true }" [(ngModel)]="view">
+            <lu-segmented-control-filter [label]="mapLabel" [value]="VIEW_TYPE.MAP" />
+            <lu-segmented-control-filter [label]="listLabel" [value]="VIEW_TYPE.LIST" />
+          </lu-segmented-control>
+          <lu-form-field label="Lieu" hiddenLabel>
+            <lu-simple-select
+              placeholder="Sélectionner un lieu..."
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="place"
+            />
+          </lu-form-field>
+        </form>
+      </ng-container>
+    </lu-page-header>
   </ng-container>
   <ng-container mainLayoutContent>
     <lu-main-layout-block>

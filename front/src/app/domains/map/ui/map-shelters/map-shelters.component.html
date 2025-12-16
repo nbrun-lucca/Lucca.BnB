@@ -1,48 +1,62 @@
-<form class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
-  <lu-filter-bar>
-    <ul *luFilterPillAddonBefore class="segmentedControl filterBar-segmentedControl" role="presentation">
-      <li class="segmentedControl-item">
-        <input
-          type="radio"
-          class="segmentedControl-item-input"
-          name="tab"
-          id="tabMap"
-          [value]="VIEW_TYPE.MAP"
-          [(ngModel)]="view"
-        />
-        <label for="tabMap" class="segmentedControl-item-action">Vue carte</label>
-      </li>
-      <li class="segmentedControl-item">
-        <input
-          type="radio"
-          class="segmentedControl-item-input"
-          name="tab"
-          id="tabList"
-          [value]="VIEW_TYPE.LIST"
-          [(ngModel)]="view"
-        />
-        <label for="tabList" class="segmentedControl-item-action">Vue liste</label>
-      </li>
-    </ul>
-    <lu-filter-pill label="Lieu">
-      <lu-simple-select [ngModelOptions]="{ standalone: true }" [(ngModel)]="place" />
-    </lu-filter-pill>
-  </lu-filter-bar>
-  @if (view() === VIEW_TYPE.MAP) {
-    <div class="box">
-      <iframe
-        src="https://www.google.com/maps/d/u/0/viewer?hl=fr&ll=48.86631203364376%2C2.355756225748862&z=13&mid=1NoIu6TV-lAlMuNzXWbBlR60nhMLqDjY8"
-        width="560"
-        height="315"
-        title="Carte des hébergements"
-      ></iframe>
-    </div>
-  }
-  @if (view() === VIEW_TYPE.LIST) {
-    @for (i of [].constructor(6); track $index) {
-      <div class="box">
-        <p>Hébergement {{ $index }}</p>
-      </div>
+@if (view() === VIEW_TYPE.MAP) {
+  <div class="box">
+    <iframe
+      src="https://www.google.com/maps/d/u/0/viewer?hl=fr&ll=48.86631203364376%2C2.355756225748862&z=13&mid=1NoIu6TV-lAlMuNzXWbBlR60nhMLqDjY8"
+      width="560"
+      height="315"
+      title="Carte des hébergements"
+    ></iframe>
+  </div>
+}
+@if (view() === VIEW_TYPE.LIST) {
+  <lu-grid columns="3" columnGap="300" rowGap="300">
+    @for (i of [].constructor(12); track $index) {
+      <lu-grid-column>
+        <div class="card mod-action accommodation">
+          @if ($first) {
+            <img
+              class="accommodation-image"
+              ngSrc="https://www.maisons-pierre.com/wp-content/uploads/2021/04/1300x600-maisons-pierre-lemag-quel-type-maison-choisir-couv.jpg"
+              height="100"
+              width="90"
+              alt=""
+              [attr.style]="
+                `--border-color: var(--palettes-${palettes[$index % 7]}-200); --background-color: var(--palettes-${palettes[$index % 7]}-50)`
+              "
+            />
+            <div class="pr-u-padding200">
+              <div class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap100">
+                <h3>
+                  <span class="pr-u-textS pag-u-textNeutral600 pr-u-fontWeight400">Chez</span>
+                  Daniel Hernandez
+                </h3>
+                <lu-tag label="Paris" icon="mapPin" [palette]="palettes[$index % 7]" />
+              </div>
+              <p>Moins de 30 min en métro</p>
+            </div>
+          } @else {
+            <div
+              class="accommodation-image mod-empty"
+              [attr.style]="
+                `--border-color: var(--palettes-${palettes[$index % 7]}-200); --background-color: var(--palettes-${palettes[$index % 7]}-50)`
+              "
+            >
+              <lbnb-map-bubble-left [palette]="palettes[$index % 7]" />
+              <lbnb-map-bubble-right [palette]="palettes[$index % 7]" />
+            </div>
+            <div class="pr-u-padding200">
+              <div class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap100">
+                <h3>
+                  <span class="pr-u-textS pag-u-textNeutral600 pr-u-fontWeight400">Chez</span>
+                  Prénom Nom
+                </h3>
+                <lu-tag label="Lieu" icon="mapPin" [palette]="palettes[$index % 7]" />
+              </div>
+              <p>Infos sur l'adresse</p>
+            </div>
+          }
+        </div>
+      </lu-grid-column>
     }
-  }
-</form>
+  </lu-grid>
+}
