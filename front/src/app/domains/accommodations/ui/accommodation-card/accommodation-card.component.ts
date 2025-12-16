@@ -8,12 +8,12 @@ import { BubblesLeftComponent } from '../bubbles-left/bubbles-left.component';
 import { BubblesRightComponent } from '../bubbles-right/bubbles-right.component';
 
 @Component({
-  selector: 'lbnb-accommodation',
+  selector: 'lbnb-accommodation-card',
   imports: [NgOptimizedImage, TagComponent, BubblesLeftComponent, BubblesRightComponent],
-  templateUrl: './accommodation.component.html',
-  styleUrl: './accommodation.component.scss',
+  templateUrl: './accommodation-card.component.html',
+  styleUrl: './accommodation-card.component.scss',
 })
-export class AccommodationComponent {
+export class AccommodationCardComponent {
   readonly hasPhoto = input<boolean>();
   readonly palette = input.required<Palette | DecorativePalette>();
 

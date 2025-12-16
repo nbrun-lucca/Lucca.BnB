@@ -31,7 +31,25 @@
   <ng-container mainLayoutContent>
     <lu-main-layout-block>
       <div class="container mod-dataPage">
-        <lbnb-map-shelters />
+        @if (view() === VIEW_TYPE.MAP) {
+          <div class="box">
+            <iframe
+              src="https://www.google.com/maps/d/u/0/viewer?hl=fr&ll=48.86631203364376%2C2.355756225748862&z=13&mid=1NoIu6TV-lAlMuNzXWbBlR60nhMLqDjY8"
+              width="560"
+              height="315"
+              title="Carte des hébergements"
+            ></iframe>
+          </div>
+        }
+        @if (view() === VIEW_TYPE.LIST) {
+          <lu-grid columns="3" columnGap="300" rowGap="300">
+            @for (i of [].constructor(18); track $index) {
+              <lu-grid-column>
+                <lbnb-accommodation-card [hasPhoto]="$first" [palette]="palettes[$index % 7]" />
+              </lu-grid-column>
+            }
+          </lu-grid>
+        }
       </div>
     </lu-main-layout-block>
   </ng-container>

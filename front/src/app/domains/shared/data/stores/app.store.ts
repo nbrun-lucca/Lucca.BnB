@@ -49,7 +49,7 @@ export const AppStore = signalStore(
         host: {
           id: 1,
           requests: [],
-          shelter: {
+          accommodation: {
             photo:
               'https://www.maisons-pierre.com/wp-content/uploads/2021/04/1300x600-maisons-pierre-lemag-quel-type-maison-choisir-couv.jpg',
             name: 'Ma petite maison',

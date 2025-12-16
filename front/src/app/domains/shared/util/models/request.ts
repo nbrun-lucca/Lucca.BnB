@@ -1,6 +1,6 @@
 export interface Request {
   idTraveler: number;
-  idShelter: number;
+  idAccommodation: number;
   startDate: Date;
   endDate: Date;
   status: string;

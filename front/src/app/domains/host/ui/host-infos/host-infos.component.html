@@ -1,31 +1,35 @@
 <div class="hostInfos box pr-u-marginBlockStart100">
-  @if (store.host()?.shelter; as shelter) {
+  @if (store.host()?.accommodation; as accommodation) {
     <div class="hostInfos-content">
       <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap200">
         <lbnb-info icon="mapPin" heading="Adresse" [description]="adress" />
         <ng-template #adress>
-          @if (shelter.adressHref) {
-            <a luLink external [href]="shelter.adressHref">{{ shelter.adress }}</a>
+          @if (accommodation.adressHref) {
+            <a luLink external [href]="accommodation.adressHref">{{ accommodation.adress }}</a>
           } @else {
-            <span>{{ shelter.adress }}</span>
+            <span>{{ accommodation.adress }}</span>
           }
         </ng-template>
         <div class="pr-u-displayFlex pr-u-flexDirectionColumn pr-u-gap100">
-          <lbnb-info icon="buildingHouse" heading="Type de logement" [description]="shelter.type" />
-          <lbnb-info heading="Pièce à part" [hasEmptyIcon]="true" [description]="shelter.hasRoomSide ? 'Oui' : 'Non'" />
-          <lbnb-info heading="Type de couchage" [hasEmptyIcon]="true" [description]="shelter.sleepingType" />
-          <lbnb-info heading="Equipement" [hasEmptyIcon]="true" [description]="shelter.equipment" />
-          @if (shelter.othersRoomates; as othersRoomates) {
-            <lbnb-info heading="Autres habitants" [hasEmptyIcon]="true" [description]="shelter.othersRoomates" />
+          <lbnb-info icon="buildingHouse" heading="Type de logement" [description]="accommodation.type" />
+          <lbnb-info
+            heading="Pièce à part"
+            [hasEmptyIcon]="true"
+            [description]="accommodation.hasRoomSide ? 'Oui' : 'Non'"
+          />
+          <lbnb-info heading="Type de couchage" [hasEmptyIcon]="true" [description]="accommodation.sleepingType" />
+          <lbnb-info heading="Equipement" [hasEmptyIcon]="true" [description]="accommodation.equipment" />
+          @if (accommodation.othersRoomates; as othersRoomates) {
+            <lbnb-info heading="Autres habitants" [hasEmptyIcon]="true" [description]="accommodation.othersRoomates" />
           }
         </div>
-        @if (shelter.othersInfos; as othersInfos) {
-          <lbnb-info icon="signInfo" heading="Infos complémentaires" [description]="shelter.othersInfos" />
+        @if (accommodation.othersInfos; as othersInfos) {
+          <lbnb-info icon="signInfo" heading="Infos complémentaires" [description]="accommodation.othersInfos" />
         }
       </div>
-      @if (shelter.photo) {
+      @if (accommodation.photo) {
         <div class="pinnedPhoto">
-          <div class="pinnedPhoto-img" [attr.style]="`--site-image-url: url(${shelter.photo})`"></div>
+          <div class="pinnedPhoto-img" [attr.style]="`--site-image-url: url(${accommodation.photo})`"></div>
         </div>
       }
     </div>

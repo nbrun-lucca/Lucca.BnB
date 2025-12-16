@@ -6,8 +6,8 @@ export const APP_ROUTES: Routes = [
     loadComponent: () => import('@app/dashboard/feature/dashboard.page'),
   },
   {
-    path: 'map',
-    loadComponent: () => import('@app/map/feature/map.page'),
+    path: 'accommodations',
+    loadComponent: () => import('@app/accommodations/feature/accommodations.page'),
   },
   {
     path: 'traveler',

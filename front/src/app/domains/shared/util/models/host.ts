@@ -2,11 +2,11 @@ import type { Request } from './request';
 
 export interface Host {
   id: number;
-  shelter: Shelter | null;
+  accommodation: Accommodation | null;
   requests: Request[];
 }
 
-export interface Shelter {
+export interface Accommodation {
   name: string;
   photo: string;
   adress: string;

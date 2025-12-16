@@ -49,7 +49,7 @@ export default class DashboardPage implements OnInit {
       {
         icon: 'mapPlan',
         image: 'https://cartes.app/_next/image?url=%2Fblog-images%2Ffrance-google.png&w=3840&q=75',
-        link: '/map',
+        link: '/accommodations',
         heading: 'Hébergements',
         description: 'Repérez rapidement les hébergements disponibles autour de votre destination.',
       },

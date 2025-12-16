@@ -2,7 +2,7 @@
   display: contents;
 }
 
-.accommodation {
+.accommodationCard {
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
   padding: 0;
 }
 
-.accommodation-image {
+.accommodationCard-image {
   --border-color: var(--palettes-neutral-0);
   --background-color: var(--palettes-neutral-0);
 

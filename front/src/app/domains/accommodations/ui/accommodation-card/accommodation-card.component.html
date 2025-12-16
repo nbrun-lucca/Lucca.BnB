@@ -1,7 +1,7 @@
-<div class="card mod-action accommodation">
+<div class="card mod-action accommodationCard">
   @if (hasPhoto()) {
     <img
-      class="accommodation-image"
+      class="accommodationCard-image"
       ngSrc="https://www.maisons-pierre.com/wp-content/uploads/2021/04/1300x600-maisons-pierre-lemag-quel-type-maison-choisir-couv.jpg"
       height="100"
       width="90"
@@ -22,7 +22,7 @@
     </div>
   } @else {
     <div
-      class="accommodation-image mod-empty"
+      class="accommodationCard-image mod-empty"
       [attr.style]="
         `--border-color: var(--palettes-${palette()}-200); --background-color: var(--palettes-${palette()}-50)`
       "

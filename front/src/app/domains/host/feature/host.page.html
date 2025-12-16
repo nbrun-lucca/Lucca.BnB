@@ -39,13 +39,13 @@
               <span>Votre hébergement</span>
               <lu-status-badge label="Proposé" palette="success" />
             </h2>
-            @if (store.host()?.shelter) {
+            @if (store.host()?.accommodation) {
               <button type="button" luButton="outlined">Gérer votre hébergement</button>
             }
           </header>
           <lbnb-host-infos />
         </section>
-        @if (store.host()?.shelter) {
+        @if (store.host()?.accommodation) {
           <section>
             <header>
               <h2>Vos demandes en cours</h2>
