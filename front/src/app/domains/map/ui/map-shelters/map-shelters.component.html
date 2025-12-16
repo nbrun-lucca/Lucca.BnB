@@ -10,52 +10,9 @@
 }
 @if (view() === VIEW_TYPE.LIST) {
   <lu-grid columns="3" columnGap="300" rowGap="300">
-    @for (i of [].constructor(12); track $index) {
+    @for (i of [].constructor(18); track $index) {
       <lu-grid-column>
-        <div class="card mod-action accommodation">
-          @if ($first) {
-            <img
-              class="accommodation-image"
-              ngSrc="https://www.maisons-pierre.com/wp-content/uploads/2021/04/1300x600-maisons-pierre-lemag-quel-type-maison-choisir-couv.jpg"
-              height="100"
-              width="90"
-              alt=""
-              [attr.style]="
-                `--border-color: var(--palettes-${palettes[$index % 7]}-200); --background-color: var(--palettes-${palettes[$index % 7]}-50)`
-              "
-            />
-            <div class="pr-u-padding200">
-              <div class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap100">
-                <h3>
-                  <span class="pr-u-textS pag-u-textNeutral600 pr-u-fontWeight400">Chez</span>
-                  Daniel Hernandez
-                </h3>
-                <lu-tag label="Paris" icon="mapPin" [palette]="palettes[$index % 7]" />
-              </div>
-              <p>Moins de 30 min en métro</p>
-            </div>
-          } @else {
-            <div
-              class="accommodation-image mod-empty"
-              [attr.style]="
-                `--border-color: var(--palettes-${palettes[$index % 7]}-200); --background-color: var(--palettes-${palettes[$index % 7]}-50)`
-              "
-            >
-              <lbnb-map-bubble-left [palette]="palettes[$index % 7]" />
-              <lbnb-map-bubble-right [palette]="palettes[$index % 7]" />
-            </div>
-            <div class="pr-u-padding200">
-              <div class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap100">
-                <h3>
-                  <span class="pr-u-textS pag-u-textNeutral600 pr-u-fontWeight400">Chez</span>
-                  Prénom Nom
-                </h3>
-                <lu-tag label="Lieu" icon="mapPin" [palette]="palettes[$index % 7]" />
-              </div>
-              <p>Infos sur l'adresse</p>
-            </div>
-          }
-        </div>
+        <lbnb-accommodation [hasPhoto]="$first" [palette]="palettes[$index % 7]" />
       </lu-grid-column>
     }
   </lu-grid>
