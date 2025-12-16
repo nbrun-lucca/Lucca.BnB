@@ -7,15 +7,15 @@
     >
       <ng-container pageHeaderActions>
         <form class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-gap100">
-          <ng-template #mapLabel>
-            <lu-icon icon="mapPlan" alt="Vue carte" />
-          </ng-template>
           <ng-template #listLabel>
             <lu-icon icon="app" alt="Vue liste" />
           </ng-template>
+          <ng-template #mapLabel>
+            <lu-icon icon="mapPlan" alt="Vue carte" />
+          </ng-template>
           <lu-segmented-control [ngModelOptions]="{ standalone: true }" [(ngModel)]="view">
-            <lu-segmented-control-filter [label]="mapLabel" [value]="VIEW_TYPE.MAP" />
             <lu-segmented-control-filter [label]="listLabel" [value]="VIEW_TYPE.LIST" />
+            <lu-segmented-control-filter [label]="mapLabel" [value]="VIEW_TYPE.MAP" />
           </lu-segmented-control>
           <lu-form-field label="Lieu" hiddenLabel>
             <lu-simple-select
@@ -31,16 +31,6 @@
   <ng-container mainLayoutContent>
     <lu-main-layout-block>
       <div class="container mod-dataPage">
-        @if (view() === VIEW_TYPE.MAP) {
-          <div class="box">
-            <iframe
-              src="https://www.google.com/maps/d/u/0/viewer?hl=fr&ll=48.86631203364376%2C2.355756225748862&z=13&mid=1NoIu6TV-lAlMuNzXWbBlR60nhMLqDjY8"
-              width="560"
-              height="315"
-              title="Carte des hébergements"
-            ></iframe>
-          </div>
-        }
         @if (view() === VIEW_TYPE.LIST) {
           <lu-grid columns="3" columnGap="300" rowGap="300">
             @for (i of [].constructor(18); track $index) {
@@ -49,6 +39,21 @@
               </lu-grid-column>
             }
           </lu-grid>
+        }
+        @if (view() === VIEW_TYPE.MAP) {
+          <div class="box">
+            <iframe
+              class="accommodations-map"
+              width="1100"
+              height="650"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/d/embed?mid=1NoIu6TV-lAlMuNzXWbBlR60nhMLqDjY8&hl=fr&ehbc=2E312F"
+              title="Carte des hébergements"
+            >
+            </iframe>
+          </div>
         }
       </div>
     </lu-main-layout-block>

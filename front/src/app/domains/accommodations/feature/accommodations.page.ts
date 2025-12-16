@@ -36,6 +36,7 @@ export type ViewType = (typeof VIEW_TYPE)[keyof typeof VIEW_TYPE];
     IconComponent,
   ],
   templateUrl: './accommodations.page.html',
+  styleUrl: './accommodations.page.scss',
 })
 export default class AccommodationsPage implements OnInit {
   readonly VIEW_TYPE = VIEW_TYPE;

@@ -17,27 +17,25 @@
     <lu-main-layout-block>
       <div class="container mod-dataPage">
         <section>
+          <header>
+            <h2>Vos demandes en cours</h2>
+          </header>
+          <div class="box pr-u-marginBlockStart100">
+            <lu-empty-state-section
+              icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperActionSuccess.svg"
+              heading="Aucune demande en cours"
+              description="Vous n’avez actuellement aucune demande d’hébergement en attente. Vos nouvelles demandes apparaîtront ici."
+              palette="success"
+            />
+          </div>
+        </section>
+        <section>
           <header class="pr-u-displayFlex pr-u-alignItemsCenter pr-u-justifyContentSpaceBetween pr-u-gap100">
             <h2>Votre passeport</h2>
             <button type="button" luButton="outlined">Gérer votre passeport</button>
           </header>
           <lbnb-traveler-infos />
         </section>
-        @if (store.traveler()?.passport) {
-          <section>
-            <header>
-              <h2>Vos demandes en cours</h2>
-            </header>
-            <div class="box pr-u-marginBlockStart100">
-              <lu-empty-state-section
-                icon="https://cdn.lucca.fr/lucca-front/assets/empty-states/icons/iconPaperActionSuccess.svg"
-                heading="Aucune demande en cours"
-                description="Vous n’avez actuellement aucune demande d’hébergement en attente. Vos nouvelles demandes apparaîtront ici."
-                palette="success"
-              />
-            </div>
-          </section>
-        }
         <section>
           <header>
             <h2>Vos voyages passées</h2>
